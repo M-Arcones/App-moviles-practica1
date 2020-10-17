@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+    ArrayList<String[]> Preguntas = new ArrayList<String[]>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.Btn_jugar).setOnClickListener(this);
 
         int n_preg=Integer.parseInt(getResources().getString(this.getResources().getIdentifier("num_preguntas", "string", this.getPackageName())));
-        ArrayList<String[]> Preguntas = new ArrayList<String[]>();
+
         int n_preguntas_totales=3;
         Random rnd = new Random();
         rnd.setSeed(6);//cambiar a la hora
@@ -49,7 +50,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 }
 
     public void onClick(View v) {
+
         Intent intent = new Intent(this,Pregunta_RadioButtons.class);
+        intent.putExtra("Preguntas", Preguntas);
         startActivity(intent);
     }
 }
