@@ -1,9 +1,32 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="num_preguntas">3</string>
+    <string-array name="pregunta0">
+        <item>Button 1</item>
+        <item>Pregunta</item>
+        <item>Resp1</item>
+        <item>Resp2</item>
+        <item>Resp3</item>
+        <item>Resp4</item>
+        <item>Resp_Correcta</item>
+    </string-array>
+    <string-array name="pregunta1">
+        <item>Button 2</item>
+        <item>Pregunta</item>
+        <item>Resp1</item>
+        <item>Resp2</item>
+        <item>Resp3</item>
+        <item>Resp4</item>
+        <item>Resp_Correcta</item>
+    </string-array>
+    <string-array name="pregunta2">
+        <item>Button 3</item>
+        <item>Pregunta</item>
+        <item>Resp1</item>
+        <item>Resp2</item>
+        <item>Resp3</item>
+        <item>Resp4</item>
+        <item>Resp_Correcta</item>
+    </string-array>
 
-    <string name="quiz_question0">¿Cómo se escribe correctamente\n la serie animada de WarnerBros?</string>
-    <string name="quiz0_a">Looney toons.</string>
-    <string name="quiz0_b">Luney toons.</string>
-    <string name="quiz0_c">Looney tunes.</string>
-    <string name="quiz0_d">Luney tunes.</string>
 </resources>
