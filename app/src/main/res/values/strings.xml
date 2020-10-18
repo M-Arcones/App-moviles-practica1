@@ -2,7 +2,7 @@
     <string name="app_name">My Application</string>
     <string name="num_preguntas">3</string>
     <string-array name="pregunta0">
-        <item>Button 1</item>
+        <item>Button</item>
         <item>Pregunta</item>
         <item>Resp1</item>
         <item>Resp2</item>
@@ -11,16 +11,14 @@
         <item>Resp_Correcta</item>
     </string-array>
     <string-array name="pregunta1">
-        <item>Button 2</item>
+        <item>Seekbar</item>
         <item>Pregunta</item>
-        <item>Resp1</item>
-        <item>Resp2</item>
-        <item>Resp3</item>
-        <item>Resp4</item>
+        <item>Rango_ini</item>
+        <item>Rango_fin</item>
         <item>Resp_Correcta</item>
     </string-array>
     <string-array name="pregunta2">
-        <item>Button 3</item>
+        <item>Imagen</item>
         <item>Pregunta</item>
         <item>Resp1</item>
         <item>Resp2</item>

@@ -23,7 +23,8 @@ public class Pregunta_RadioButtons extends AppCompatActivity {
         setContentView(R.layout.activity_pregunta__radio_buttons);
 
         ArrayList<String[]> Preguntas = (ArrayList<String[]>) getIntent().getSerializableExtra("Preguntas");
-        ((TextView)findViewById(R.id.textView)).setText(Preguntas.get(0)[0]);
+        int Puntuacion = (int) getIntent().getSerializableExtra("Puntuacion");
+        ((TextView)findViewById(R.id.textView)).setText(""+ Puntuacion);
 
     }
 }
