@@ -17,4 +17,87 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/Btn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Radio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/Btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Imagen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Btn1" />
+
+    <Button
+        android:id="@+id/Btn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seek"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Btn2" />
+
+    <LinearLayout
+        android:id="@+id/LayoutMarcador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/TxtPreguntasContestadas"
+            android:layout_width="298dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:text="1/40" />
+
+        <TextView
+            android:id="@+id/TxtPuntuacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Puntuación: 0"
+            android:textAlignment="textEnd" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LayoutMarcador">
+
+        <TextView
+            android:id="@+id/TxtPregunta"
+            android:layout_width="386dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Aqui se imprime la pregunta " />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/BtnSiguientePregunta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Siguiente"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

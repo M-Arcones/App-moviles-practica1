@@ -3,7 +3,7 @@
     <string name="num_preguntas">3</string>
     <string-array name="pregunta0">
         <item>Button</item>
-        <item>Pregunta</item>
+        <item>Pregunta 1</item>
         <item>Resp1</item>
         <item>Resp2</item>
         <item>Resp3</item>
@@ -12,14 +12,14 @@
     </string-array>
     <string-array name="pregunta1">
         <item>Seekbar</item>
-        <item>Pregunta</item>
+        <item>Pregunta 2</item>
         <item>Rango_ini</item>
         <item>Rango_fin</item>
         <item>Resp_Correcta</item>
     </string-array>
     <string-array name="pregunta2">
         <item>Imagen</item>
-        <item>Pregunta</item>
+        <item>Pregunta 3</item>
         <item>Resp1</item>
         <item>Resp2</item>
         <item>Resp3</item>
