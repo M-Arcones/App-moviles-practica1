@@ -42,7 +42,7 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
         }
 
         /**/
-        ((TextView) findViewById(R.id.TxtPregunta)).setText(Preguntas.get(0)[1]);
+        mostarPregunta();
         Preguntas.remove(0);
 
         /*Borrar Codigo pruebas*/
@@ -51,8 +51,51 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
 
     public void onClick(View v) {
         if(Preguntas.size()>0){
-            ((TextView) findViewById(R.id.TxtPregunta)).setText(Preguntas.get(0)[1]);
+            mostarPregunta();
             Preguntas.remove(0);
+        }
+    }
+
+    public void mostarPregunta(){
+        ((TextView) findViewById(R.id.TxtPregunta)).setText(Preguntas.get(0)[1]);
+        List<Integer> PosicionesDisponiblesRespuesta = new ArrayList<Integer>();
+        Random rnd = new Random();
+        rnd.setSeed(6);//cambiar a la hora
+        findViewById(R.id.LayoutRespuestaButton).setVisibility(View.INVISIBLE);
+
+        switch (Preguntas.get(0)[0]){
+            case "Button":
+                findViewById(R.id.LayoutRespuestaButton).setVisibility(View.VISIBLE);
+                int n_respuestas=4;
+                for(int i=0;i<n_respuestas;i++){
+                    PosicionesDisponiblesRespuesta.add(i+2);
+                }
+                for(int i=0;i<n_respuestas;i++){
+                    int randomNum = rnd.nextInt((PosicionesDisponiblesRespuesta.size()));
+                    switch (i){
+                        case 0:
+                            ((TextView) findViewById(R.id.RbtnResp1)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                        break;
+                        case 1:
+                            ((TextView) findViewById(R.id.RbtnResp2)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                        break;
+                        case 2:
+                            ((TextView) findViewById(R.id.RbtnResp3)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                        break;
+                        case 3:
+                            ((TextView) findViewById(R.id.RbtnResp4)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                        break;
+                    }
+                    PosicionesDisponiblesRespuesta.remove(randomNum);
+                }
+                break;
+            case "Seekbar":
+                findViewById(R.id.LayoutRespuestaButton).setVisibility(View.INVISIBLE);
+            break;
+            case "Iamgen":
+                findViewById(R.id.LayoutRespuestaButton).setVisibility(View.INVISIBLE);
+            break;
+
         }
     }
 

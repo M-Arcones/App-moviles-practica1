@@ -6,51 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".Pregunta_RadioButtons">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/Btn1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Radio"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/Btn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Imagen"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Btn1" />
-
-    <Button
-        android:id="@+id/Btn3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Seek"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Btn2" />
-
     <LinearLayout
         android:id="@+id/LayoutMarcador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,7 +36,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="120dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="80dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,6 +58,55 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/LayaoutRespuestas" />
+
+    <LinearLayout
+        android:id="@+id/LayaoutRespuestas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <LinearLayout
+            android:id="@+id/LayoutRespuestaButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <RadioGroup
+                android:layout_width="386dp"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/RbtnResp1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="RbtnResp1" />
+
+                <RadioButton
+                    android:id="@+id/RbtnResp2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="RbtnResp2" />
+
+                <RadioButton
+                    android:id="@+id/RbtnResp3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="RbtnResp3" />
+
+                <RadioButton
+                    android:id="@+id/RbtnResp4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="RbtnResp4" />
+            </RadioGroup>
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
