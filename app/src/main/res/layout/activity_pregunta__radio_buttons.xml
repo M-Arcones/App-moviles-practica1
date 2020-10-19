@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:visibility="visible"
     tools:context=".Pregunta_RadioButtons">
 
     <LinearLayout
@@ -70,6 +71,56 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <LinearLayout
+            android:id="@+id/LayoutMultipleRespuesta"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:visibility="gone">
+
+            <CheckBox
+                android:id="@+id/ChkB_Resp1"
+                android:layout_width="308dp"
+                android:layout_height="wrap_content"
+                android:text="ChkB_Resp1"
+                android:textAlignment="center" />
+
+            <CheckBox
+                android:id="@+id/ChkB_Resp2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ChkB_Resp2"
+                android:textAlignment="center" />
+
+            <CheckBox
+                android:id="@+id/ChkB_Resp3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ChkB_Resp3"
+                android:textAlignment="center" />
+
+            <CheckBox
+                android:id="@+id/ChkB_Resp4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ChkB_Resp4"
+                android:textAlignment="center" />
+
+            <CheckBox
+                android:id="@+id/ChkB_Resp5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ChkB_Resp5"
+                android:textAlignment="center" />
+
+            <CheckBox
+                android:id="@+id/ChkB_Resp6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ChkB_Resp6"
+                android:textAlignment="center" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/LayoutRespuestaSkb"
@@ -158,6 +209,7 @@
                     android:textAlignment="center" />
 
             </RadioGroup>
+
         </LinearLayout>
     </LinearLayout>
 

@@ -23,6 +23,7 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_pregunta__radio_buttons);
 
         int n_preguntas_totales = (int) getIntent().getSerializableExtra("n_preguntas_totales");
+        ((TextView) findViewById(R.id.TxtPreguntasContestadas)).setText(""+n_preguntas_totales);
 
         Random rnd = new Random();
         rnd.setSeed(6);//cambiar a la hora
@@ -80,10 +81,9 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
         List<Integer> PosicionesDisponiblesRespuesta = new ArrayList<Integer>();
         Random rnd = new Random();
         rnd.setSeed(6);//cambiar a la hora
-        //findViewById(R.id.LayoutRespuestaButton).setVisibility(View.INVISIBLE);
         findViewById(R.id.LayoutRespuestaButton).setVisibility(View.GONE);
-        //findViewById(R.id.LayoutRespuestaSkb).setVisibility(View.INVISIBLE);
         findViewById(R.id.LayoutRespuestaSkb).setVisibility(View.GONE);
+        findViewById(R.id.LayoutMultipleRespuesta).setVisibility(View.GONE);
 
         switch (Preguntas.get(0)[0]){
             case "Button":
@@ -120,11 +120,61 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
                 ((TextView) findViewById(R.id.TxtskbValorSeleccionado)).setText(""+(Integer.parseInt(Preguntas.get(0)[3])-Integer.parseInt(Preguntas.get(0)[2]))/2);
                 valorMinimo=Integer.parseInt(Preguntas.get(0)[2]);
             break;
+            case "Multiple":
+                findViewById(R.id.LayoutMultipleRespuesta).setVisibility(View.VISIBLE);
+                int n_respuestas_multi=6;
+                for(int i=0;i<n_respuestas_multi;i++){
+                    PosicionesDisponiblesRespuesta.add(i+2);
+                }
+                for(int i=0;i<n_respuestas_multi;i++) {
+                    int randomNum = rnd.nextInt((PosicionesDisponiblesRespuesta.size()));
+                    switch (i) {
+                        case 0:
+                            ((TextView) findViewById(R.id.ChkB_Resp1)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                            break;
+                        case 1:
+                            ((TextView) findViewById(R.id.ChkB_Resp2)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                            break;
+                        case 2:
+                            ((TextView) findViewById(R.id.ChkB_Resp3)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                            break;
+                        case 3:
+                            ((TextView) findViewById(R.id.ChkB_Resp4)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                            break;
+                        case 4:
+                            ((TextView) findViewById(R.id.ChkB_Resp5)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                            break;
+                        case 5:
+                            ((TextView) findViewById(R.id.ChkB_Resp6)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                            break;
+                    }
+                    PosicionesDisponiblesRespuesta.remove(randomNum);
+                }
+            break;
             case "Iamgen":
                 findViewById(R.id.LayoutRespuestaButton).setVisibility(View.INVISIBLE);
             break;
 
         }
     }
-
 }
+
+
+/*
+
+
+
+
+     <string-array name="pregunta3">
+        <item>Multiple</item>
+        <item>Pregunta 3</item>
+        <item>Resp1</item>
+        <item>Resp2</item>
+        <item>Resp3</item>
+        <item>Resp4</item>
+        <item>Resp5</item>
+        <item>Resp6</item>
+        <item>Resp2|Resp5</item>
+    </string-array>
+
+ */

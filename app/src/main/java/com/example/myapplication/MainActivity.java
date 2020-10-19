@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ArrayList<String[]> Preguntas = new ArrayList<String[]>();
 
         //int n_preg=Integer.parseInt(getResources().getString(this.getResources().getIdentifier("num_preguntas", "string", this.getPackageName())));
-        int n_preguntas_totales=3;
+        int n_preguntas_totales=Integer.parseInt(getResources().getString((this.getResources().getIdentifier("num_preguntas", "string", this.getPackageName()))));
         Intent intent;
         intent = new Intent(this,Pregunta_RadioButtons.class);
         intent.putExtra("n_preguntas_totales", n_preguntas_totales);
