@@ -13,8 +13,8 @@
     <string-array name="pregunta1">
         <item>Seekbar</item>
         <item>Pregunta 2</item>
-        <item>Rango_ini</item>
-        <item>Rango_fin</item>
+        <item>10</item>
+        <item>50</item>
         <item>Resp_Correcta</item>
     </string-array>
     <string-array name="pregunta2">

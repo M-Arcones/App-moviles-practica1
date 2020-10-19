@@ -3,12 +3,10 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +14,8 @@ import java.util.Random;
 
 public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnClickListener{
     ArrayList<String[]> Preguntas= new ArrayList<String[]>();
+    SeekBar Skb_BarraRespuesta;
+    int valorMinimo=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,25 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
 
         /*Borrar Codigo pruebas*/
         findViewById(R.id.BtnSiguientePregunta).setOnClickListener((View.OnClickListener) this);
+        Skb_BarraRespuesta=(SeekBar)  findViewById(R.id.Skb_BarraRespuestas);
+        Skb_BarraRespuesta.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                int calculo=Skb_BarraRespuesta.getProgress()+valorMinimo;
+                ((TextView) findViewById(R.id.TxtskbValorSeleccionado)).setText(""+calculo);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        }
+        );
     }
 
     public void onClick(View v) {
@@ -61,7 +80,10 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
         List<Integer> PosicionesDisponiblesRespuesta = new ArrayList<Integer>();
         Random rnd = new Random();
         rnd.setSeed(6);//cambiar a la hora
-        findViewById(R.id.LayoutRespuestaButton).setVisibility(View.INVISIBLE);
+        //findViewById(R.id.LayoutRespuestaButton).setVisibility(View.INVISIBLE);
+        findViewById(R.id.LayoutRespuestaButton).setVisibility(View.GONE);
+        //findViewById(R.id.LayoutRespuestaSkb).setVisibility(View.INVISIBLE);
+        findViewById(R.id.LayoutRespuestaSkb).setVisibility(View.GONE);
 
         switch (Preguntas.get(0)[0]){
             case "Button":
@@ -90,7 +112,13 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
                 }
                 break;
             case "Seekbar":
-                findViewById(R.id.LayoutRespuestaButton).setVisibility(View.INVISIBLE);
+                findViewById(R.id.LayoutRespuestaSkb).setVisibility(View.VISIBLE);
+                ((TextView) findViewById(R.id.TxtSeekbarMinValue)).setText(Preguntas.get(0)[2]);
+                ((TextView) findViewById(R.id.TxtSeekbarMaxValue)).setText(Preguntas.get(0)[3]);
+                ((SeekBar)findViewById(R.id.Skb_BarraRespuestas)).setProgress((Integer.parseInt(Preguntas.get(0)[3])-Integer.parseInt(Preguntas.get(0)[2]))/2);
+                ((SeekBar)findViewById(R.id.Skb_BarraRespuestas)).setMax(Integer.parseInt(Preguntas.get(0)[3])-Integer.parseInt(Preguntas.get(0)[2]));
+                ((TextView) findViewById(R.id.TxtskbValorSeleccionado)).setText(""+(Integer.parseInt(Preguntas.get(0)[3])-Integer.parseInt(Preguntas.get(0)[2]))/2);
+                valorMinimo=Integer.parseInt(Preguntas.get(0)[2]);
             break;
             case "Iamgen":
                 findViewById(R.id.LayoutRespuestaButton).setVisibility(View.INVISIBLE);
