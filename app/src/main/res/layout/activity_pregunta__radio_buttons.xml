@@ -37,7 +37,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="120dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="40dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,10 +52,11 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/BtnSiguientePregunta"
+        android:id="@+id/BtnValidar_SigPregunta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Siguiente"
+        android:text="Validar Respuesta"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -177,6 +178,7 @@
             android:visibility="gone">
 
             <RadioGroup
+                android:id="@+id/Rgbtn_button"
                 android:layout_width="386dp"
                 android:layout_height="match_parent">
 

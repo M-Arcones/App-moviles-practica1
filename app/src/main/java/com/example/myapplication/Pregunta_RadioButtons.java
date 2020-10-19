@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -16,6 +17,10 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
     ArrayList<String[]> Preguntas= new ArrayList<String[]>();
     SeekBar Skb_BarraRespuesta;
     int valorMinimo=0;
+    int Estado_validar=0;
+    String TipoPreguntaActual;
+    String Respuesta;
+    //RadioGroup radiogroup=findViewById(R.id.Rgbtn_button);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +49,12 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
 
         /**/
         mostarPregunta();
+        TipoPreguntaActual=Preguntas.get(0)[0];
         Preguntas.remove(0);
 
-        /*Borrar Codigo pruebas*/
-        findViewById(R.id.BtnSiguientePregunta).setOnClickListener((View.OnClickListener) this);
+        findViewById(R.id.BtnValidar_SigPregunta).setOnClickListener((View.OnClickListener) this);
+
+        /*Definir seekbar*/
         Skb_BarraRespuesta=(SeekBar)  findViewById(R.id.Skb_BarraRespuestas);
         Skb_BarraRespuesta.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -58,21 +65,43 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
             }
         }
         );
     }
 
     public void onClick(View v) {
-        if(Preguntas.size()>0){
-            mostarPregunta();
-            Preguntas.remove(0);
+        if (Estado_validar==1){
+            if(Preguntas.size()>0){
+                ((TextView) findViewById(R.id.BtnValidar_SigPregunta)).setText("Validar Respuesta");
+                mostarPregunta();
+                TipoPreguntaActual=Preguntas.get(0)[0];
+                Preguntas.remove(0);
+                Estado_validar=0;
+            }else{
+                ((TextView) findViewById(R.id.BtnValidar_SigPregunta)).setText("Finalizar");
+                Estado_validar=2;
+            }
+        }
+        else{
+            if(Estado_validar==0) {
+                ((TextView) findViewById(R.id.BtnValidar_SigPregunta)).setText("Siguiente Pregunta");
+                Estado_validar = 1;
+                switch (TipoPreguntaActual){
+                    case "Button":
+                        //int radioBid = radiogroup.getCheckedRadioButtonId();
+                        //((TextView) findViewById(R.id.BtnValidar_SigPregunta)).setText(""+radioBid);
+                        /*if(Preguntas.get(0)[-1]==))*/
+                    break;
+                }
+
+            }else{
+                /*Actividad resultados*/
+            }
         }
     }
 
