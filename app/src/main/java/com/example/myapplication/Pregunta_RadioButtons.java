@@ -89,6 +89,7 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
         }
         else{
             if(Estado_validar==0) {
+                int valorResuesta=suma_Fallo;
                 switch (TipoPreguntaActual){
                     case "Button":
                         RadioButton ArrayRespRadioButton[]= { ((RadioButton)findViewById(R.id.RbtnResp1)),
@@ -98,14 +99,13 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
                         for (int i=0;i<4;i++){
                             if(ArrayRespRadioButton[i].isChecked()){
                                 if(ArrayRespRadioButton[i].getText().equals(Preguntas.get(0)[Preguntas.get(0).length-1])){
-                                    Puntuacion=Puntuacion+suma_Acierto;
-                                }else{
-                                    Puntuacion=Math.min(Puntuacion+suma_Acierto,0);
+                                    valorResuesta=suma_Acierto;
                                 }
-                                ((TextView) findViewById(R.id.TxtPuntuacion)).setText("Puntuación: "+Puntuacion);
                                 i=4;
                             }
                         }
+                        Puntuacion=Math.max(Puntuacion+valorResuesta,0);
+                        ((TextView) findViewById(R.id.TxtPuntuacion)).setText("Puntuación: "+Puntuacion);
                     break;
                 }
                 Preguntas.remove(0);
