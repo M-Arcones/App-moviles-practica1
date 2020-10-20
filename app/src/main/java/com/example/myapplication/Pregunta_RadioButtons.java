@@ -104,10 +104,16 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
                                 i=4;
                             }
                         }
-                        Puntuacion=Math.max(Puntuacion+valorResuesta,0);
-                        ((TextView) findViewById(R.id.TxtPuntuacion)).setText("Puntuación: "+Puntuacion);
+                    break;
+                    case "Seekbar":
+                        if(Integer.parseInt(((TextView) findViewById(R.id.TxtskbValorSeleccionado)).getText().toString())==Integer.parseInt((Preguntas.get(0)[Preguntas.get(0).length-1]))){
+                            valorResuesta=suma_Acierto;
+                        }
                     break;
                 }
+                Puntuacion=Math.max(Puntuacion+valorResuesta,0);
+                ((TextView) findViewById(R.id.TxtPuntuacion)).setText("Puntuación: "+Puntuacion);
+
                 Preguntas.remove(0);
                 if(Preguntas.size()>0){
                     ((TextView) findViewById(R.id.BtnValidar_SigPregunta)).setText("Siguiente Pregunta");
