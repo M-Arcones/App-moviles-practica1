@@ -76,29 +76,28 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
 
     public void onClick(View v) {
         if (Estado_validar==1){
-            if(Preguntas.size()>0){
                 ((TextView) findViewById(R.id.BtnValidar_SigPregunta)).setText("Validar Respuesta");
                 mostarPregunta();
                 TipoPreguntaActual=Preguntas.get(0)[0];
                 Preguntas.remove(0);
                 Estado_validar=0;
-            }else{
-                ((TextView) findViewById(R.id.BtnValidar_SigPregunta)).setText("Finalizar");
-                Estado_validar=2;
-            }
         }
         else{
             if(Estado_validar==0) {
-                ((TextView) findViewById(R.id.BtnValidar_SigPregunta)).setText("Siguiente Pregunta");
-                Estado_validar = 1;
-                switch (TipoPreguntaActual){
-                    case "Button":
-                        //int radioBid = radiogroup.getCheckedRadioButtonId();
-                        //((TextView) findViewById(R.id.BtnValidar_SigPregunta)).setText(""+radioBid);
-                        /*if(Preguntas.get(0)[-1]==))*/
-                    break;
+                if(Preguntas.size()>0){
+                    ((TextView) findViewById(R.id.BtnValidar_SigPregunta)).setText("Siguiente Pregunta");
+                    Estado_validar = 1;
+                    switch (TipoPreguntaActual){
+                        case "Button":
+                            //int radioBid = radiogroup.getCheckedRadioButtonId();
+                            //((TextView) findViewById(R.id.BtnValidar_SigPregunta)).setText(""+radioBid);
+                            /*if(Preguntas.get(0)[-1]==))*/
+                        break;
+                    }
+                }else{
+                    ((TextView) findViewById(R.id.BtnValidar_SigPregunta)).setText("Finalizar");
+                    Estado_validar=2;
                 }
-
             }else{
                 /*Actividad resultados*/
             }
