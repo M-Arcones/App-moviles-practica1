@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
@@ -25,7 +26,6 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
     int Puntuacion=0;
     String TipoPreguntaActual;
     String Respuesta;
-    RadioButton ArrayRespRadioButton[]=new RadioButton[4];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +57,6 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
         TipoPreguntaActual=Preguntas.get(0)[0];
 
         findViewById(R.id.BtnValidar_SigPregunta).setOnClickListener((View.OnClickListener) this);
-
-
 
         /*Definir seekbar*/
         Skb_BarraRespuesta=(SeekBar)  findViewById(R.id.Skb_BarraRespuestas);
@@ -110,6 +108,28 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
                             valorResuesta=suma_Acierto;
                         }
                     break;
+                    case "Multiple":
+                        CheckBox ArrayRespCheckBox[]={((CheckBox)findViewById(R.id.ChkB_Resp1)),
+                                                        ((CheckBox)findViewById(R.id.ChkB_Resp2)),
+                                                        ((CheckBox)findViewById(R.id.ChkB_Resp3)),
+                                                        ((CheckBox)findViewById(R.id.ChkB_Resp4)),
+                                                        ((CheckBox)findViewById(R.id.ChkB_Resp5)),
+                                                        ((CheckBox)findViewById(R.id.ChkB_Resp6))};
+                        int N_respuestas=countChar(Preguntas.get(0)[Preguntas.get(0).length-1],'|');
+                        int cont_respCorrrectas=0;
+                        for (int i=0;i<6;i++){
+                            if(ArrayRespCheckBox[i].isChecked()){
+                                if(Preguntas.get(0)[Preguntas.get(0).length-1].contains(ArrayRespCheckBox[i].getText()    )){
+                                    cont_respCorrrectas+=1;
+                                }else {
+                                    cont_respCorrrectas=0;
+                                    i=6;
+                                }
+                            }
+                        }
+                        if(cont_respCorrrectas==N_respuestas){
+                            valorResuesta=suma_Acierto;
+                        }
                 }
                 Puntuacion=Math.max(Puntuacion+valorResuesta,0);
                 ((TextView) findViewById(R.id.TxtPuntuacion)).setText("Puntuación: "+Puntuacion);
@@ -206,27 +226,17 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
             case "Iamgen":
                 findViewById(R.id.LayoutRespuestaButton).setVisibility(View.INVISIBLE);
             break;
-
         }
     }
+
+    public int countChar(String str, char c)
+    {
+        int count = 0;
+        for(int i=0; i < str.length(); i++)
+        {    if(str.charAt(i) == c)
+            count++;
+        }
+        return count+1;
+    }
+
 }
-
-
-/*
-
-
-
-
-     <string-array name="pregunta3">
-        <item>Multiple</item>
-        <item>Pregunta 3</item>
-        <item>Resp1</item>
-        <item>Resp2</item>
-        <item>Resp3</item>
-        <item>Resp4</item>
-        <item>Resp5</item>
-        <item>Resp6</item>
-        <item>Resp2|Resp5</item>
-    </string-array>
-
- */
