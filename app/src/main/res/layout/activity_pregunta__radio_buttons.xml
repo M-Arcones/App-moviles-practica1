@@ -82,7 +82,7 @@
 
             <CheckBox
                 android:id="@+id/ChkB_Resp1"
-                android:layout_width="308dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="ChkB_Resp1"
                 android:textAlignment="center" />

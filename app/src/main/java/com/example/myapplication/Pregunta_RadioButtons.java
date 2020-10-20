@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -18,9 +20,12 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
     SeekBar Skb_BarraRespuesta;
     int valorMinimo=0;
     int Estado_validar=0;
+    int suma_Acierto=100;
+    int suma_Fallo=-50;
+    int Puntuacion=0;
     String TipoPreguntaActual;
     String Respuesta;
-    //RadioGroup radiogroup=findViewById(R.id.Rgbtn_button);
+    RadioButton ArrayRespRadioButton[]=new RadioButton[4];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +55,10 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
         /**/
         mostarPregunta();
         TipoPreguntaActual=Preguntas.get(0)[0];
-        Preguntas.remove(0);
 
         findViewById(R.id.BtnValidar_SigPregunta).setOnClickListener((View.OnClickListener) this);
+
+
 
         /*Definir seekbar*/
         Skb_BarraRespuesta=(SeekBar)  findViewById(R.id.Skb_BarraRespuestas);
@@ -79,21 +85,33 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
                 ((TextView) findViewById(R.id.BtnValidar_SigPregunta)).setText("Validar Respuesta");
                 mostarPregunta();
                 TipoPreguntaActual=Preguntas.get(0)[0];
-                Preguntas.remove(0);
                 Estado_validar=0;
         }
         else{
             if(Estado_validar==0) {
+                switch (TipoPreguntaActual){
+                    case "Button":
+                        RadioButton ArrayRespRadioButton[]= { ((RadioButton)findViewById(R.id.RbtnResp1)),
+                                ((RadioButton)findViewById(R.id.RbtnResp2)),
+                                ((RadioButton)findViewById(R.id.RbtnResp3)),
+                                ((RadioButton)findViewById(R.id.RbtnResp4))};
+                        for (int i=0;i<4;i++){
+                            if(ArrayRespRadioButton[i].isChecked()){
+                                if(ArrayRespRadioButton[i].getText().equals(Preguntas.get(0)[Preguntas.get(0).length-1])){
+                                    Puntuacion=Puntuacion+suma_Acierto;
+                                }else{
+                                    Puntuacion=Math.min(Puntuacion+suma_Acierto,0);
+                                }
+                                ((TextView) findViewById(R.id.TxtPuntuacion)).setText("Puntuación: "+Puntuacion);
+                                i=4;
+                            }
+                        }
+                    break;
+                }
+                Preguntas.remove(0);
                 if(Preguntas.size()>0){
                     ((TextView) findViewById(R.id.BtnValidar_SigPregunta)).setText("Siguiente Pregunta");
                     Estado_validar = 1;
-                    switch (TipoPreguntaActual){
-                        case "Button":
-                            //int radioBid = radiogroup.getCheckedRadioButtonId();
-                            //((TextView) findViewById(R.id.BtnValidar_SigPregunta)).setText(""+radioBid);
-                            /*if(Preguntas.get(0)[-1]==))*/
-                        break;
-                    }
                 }else{
                     ((TextView) findViewById(R.id.BtnValidar_SigPregunta)).setText("Finalizar");
                     Estado_validar=2;

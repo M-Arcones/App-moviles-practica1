@@ -8,7 +8,7 @@
         <item>Resp2</item>
         <item>Resp3</item>
         <item>Resp4</item>
-        <item>Resp_Correcta</item>
+        <item>Resp1</item>
     </string-array>
     <string-array name="pregunta1">
         <item>Seekbar</item>
