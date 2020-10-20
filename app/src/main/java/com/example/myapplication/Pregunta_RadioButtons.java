@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
@@ -63,8 +65,15 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
         Skb_BarraRespuesta.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                int calculo=Skb_BarraRespuesta.getProgress()+valorMinimo;
-                ((TextView) findViewById(R.id.TxtskbValorSeleccionado)).setText(""+calculo);
+                if(Estado_validar==0){
+                    int calculo=Skb_BarraRespuesta.getProgress()+valorMinimo;
+                    ((TextView) findViewById(R.id.TxtskbValorSeleccionado)).setText(""+calculo);
+                }else
+                {
+                    //seekBar.setProgress(Integer.parseInt(Preguntas.get(0)[Preguntas.get(0).length-1]));
+                    seekBar.setProgress(5);
+                }
+                ((TextView) findViewById(R.id.TxtDebug)).setText(""+Estado_validar);
             }
 
             @Override
@@ -74,19 +83,27 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
             }
-        }
-        );
+
+        });
+
     }
 
     public void onClick(View v) {
         if (Estado_validar==1){
                 ((TextView) findViewById(R.id.BtnValidar_SigPregunta)).setText("Validar Respuesta");
                 mostarPregunta();
+                deshabilitarCambiosLayout((LinearLayout) findViewById(R.id.LayoutMultipleRespuesta),true);
+                deshabilitarCambiosRadioGroup((RadioGroup) findViewById(R.id.Rgbtn_button),true);
+                //((SeekBar) findViewById(R.id.Skb_BarraRespuestas)).setEnabled(false);
                 TipoPreguntaActual=Preguntas.get(0)[0];
                 Estado_validar=0;
         }
         else{
             if(Estado_validar==0) {
+                deshabilitarCambiosLayout((LinearLayout) findViewById(R.id.LayoutMultipleRespuesta),false);
+                deshabilitarCambiosRadioGroup((RadioGroup) findViewById(R.id.Rgbtn_button),false);
+                //((SeekBar) findViewById(R.id.Skb_BarraRespuestas)).setEnabled(false);
+
                 int valorResuesta=suma_Fallo;
                 switch (TipoPreguntaActual){
                     case "Button":
@@ -119,7 +136,7 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
                         int cont_respCorrrectas=0;
                         for (int i=0;i<6;i++){
                             if(ArrayRespCheckBox[i].isChecked()){
-                                if(Preguntas.get(0)[Preguntas.get(0).length-1].contains(ArrayRespCheckBox[i].getText()    )){
+                                if(Preguntas.get(0)[Preguntas.get(0).length-1].contains(ArrayRespCheckBox[i].getText())){
                                     cont_respCorrrectas+=1;
                                 }else {
                                     cont_respCorrrectas=0;
@@ -239,4 +256,16 @@ public class Pregunta_RadioButtons extends AppCompatActivity implements View.OnC
         return count+1;
     }
 
+    public void deshabilitarCambiosLayout(LinearLayout layout,boolean habilitar){
+        for (int i = 0; i < layout.getChildCount(); i++) {
+            View child = layout.getChildAt(i);
+            child.setClickable(habilitar);
+        }
+    }
+    public void deshabilitarCambiosRadioGroup(RadioGroup RadGroup,boolean habilitar){
+        for (int i = 0; i < RadGroup.getChildCount(); i++) {
+            View child = RadGroup.getChildAt(i);
+            child.setClickable(habilitar);
+        }
+    }
 }
