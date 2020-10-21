@@ -66,7 +66,6 @@
         android:id="@+id/LayaoutRespuestas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -74,9 +73,50 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <LinearLayout
+            android:id="@+id/LayoutSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/TxtFalse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="False"
+                tools:layout_conversion_absoluteHeight="19dp"
+                tools:layout_conversion_absoluteWidth="33dp"
+                tools:layout_editor_absoluteX="88dp"
+                tools:layout_editor_absoluteY="193dp" />
+
+            <Switch
+                android:id="@+id/Switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                tools:checked="true"
+                tools:layout_conversion_absoluteHeight="27dp"
+                tools:layout_conversion_absoluteWidth="46dp"
+                tools:layout_editor_absoluteX="42dp"
+                tools:layout_editor_absoluteY="189dp" />
+
+            <TextView
+                android:id="@+id/TxtTrue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="True"
+                tools:layout_conversion_absoluteHeight="19dp"
+                tools:layout_conversion_absoluteWidth="28dp"
+                tools:layout_editor_absoluteX="13dp"
+                tools:layout_editor_absoluteY="193dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/LayoutMultipleRespuesta"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="218dp"
             android:orientation="vertical"
             tools:visibility="gone">
 
@@ -128,7 +168,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            tools:visibility="visible">
+            tools:visibility="gone">
 
             <TextView
                 android:id="@+id/TxtskbValorSeleccionado"

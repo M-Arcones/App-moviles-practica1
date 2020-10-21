@@ -4,16 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
+import android.widget.Switch;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -94,15 +93,15 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
             Estado_validar=0;
             mostarPregunta();
             deshabilitarCambiosLayout((LinearLayout) findViewById(R.id.LayoutMultipleRespuesta),true);
+            deshabilitarCambiosLayout((LinearLayout) findViewById(R.id.LayoutSwitch),true);
             deshabilitarCambiosRadioGroup((RadioGroup) findViewById(R.id.Rgbtn_button),true);
-            //((SeekBar) findViewById(R.id.Skb_BarraRespuestas)).setEnabled(false);
             TipoPreguntaActual=Preguntas.get(0)[0];
         }
         else{
             if(Estado_validar==0) {
                 deshabilitarCambiosLayout((LinearLayout) findViewById(R.id.LayoutMultipleRespuesta),false);
                 deshabilitarCambiosRadioGroup((RadioGroup) findViewById(R.id.Rgbtn_button),false);
-                //((SeekBar) findViewById(R.id.Skb_BarraRespuestas)).setEnabled(false);
+                deshabilitarCambiosLayout((LinearLayout) findViewById(R.id.LayoutSwitch),false);
 
                 int valorResuesta=suma_Fallo;
                 switch (TipoPreguntaActual){
@@ -158,6 +157,11 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                         if(cont_respCorrrectas==N_respuestas){
                             valorResuesta=suma_Acierto;
                         }
+                    case "Switch":
+                        if (((Switch)findViewById(R.id.Switch)).isChecked()==Boolean.parseBoolean(Preguntas.get(0)[Preguntas.get(0).length-1])){
+                            valorResuesta=suma_Acierto;
+                        }
+                    break;
                 }
                 Puntuacion=Math.max(Puntuacion+valorResuesta,0);
                 ((TextView) findViewById(R.id.TxtPuntuacion)).setText("Puntuación: "+Puntuacion);
@@ -184,6 +188,7 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
         findViewById(R.id.LayoutRespuestaButton).setVisibility(View.GONE);
         findViewById(R.id.LayoutRespuestaSkb).setVisibility(View.GONE);
         findViewById(R.id.LayoutMultipleRespuesta).setVisibility(View.GONE);
+        findViewById(R.id.LayoutSwitch).setVisibility(View.GONE);
 
         switch (Preguntas.get(0)[0]){
             case "Button":
@@ -253,6 +258,10 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
             break;
             case "Iamgen":
                 findViewById(R.id.LayoutRespuestaButton).setVisibility(View.INVISIBLE);
+            break;
+            case "Switch":
+                findViewById(R.id.LayoutSwitch).setVisibility(View.VISIBLE);
+                ((Switch)findViewById(R.id.Switch)).setChecked(true);
             break;
         }
     }
