@@ -4,14 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/background_mainmenu">
 
     <Button
         android:id="@+id/Btn_jugar"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="93dp"
         android:layout_height="43dp"
         android:onClick="onClick"
         android:text="Jugar"
+        android:textColor="#FBFBFB"
+        android:textColorLink="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
