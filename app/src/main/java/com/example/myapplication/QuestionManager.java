@@ -70,10 +70,10 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                     ((TextView) findViewById(R.id.TxtskbValorSeleccionado)).setText(""+calculo);
                 }else
                 {
-                    //seekBar.setProgress(Integer.parseInt(Preguntas.get(0)[Preguntas.get(0).length-1]));
-                    seekBar.setProgress(5);
+                    seekBar.setProgress(Integer.parseInt(((TextView)findViewById(R.id.TxtskbValorSeleccionado)).getText().toString())-Integer.parseInt(((TextView)findViewById(R.id.TxtSeekbarMinValue)).getText().toString()));
+                    int valoue=Integer.parseInt(((TextView)findViewById(R.id.TxtskbValorSeleccionado)).getText().toString())-Integer.parseInt(((TextView)findViewById(R.id.TxtSeekbarMinValue)).getText().toString());
+                    ((TextView) findViewById(R.id.TxtDebug)).setText(""+valoue);
                 }
-                ((TextView) findViewById(R.id.TxtDebug)).setText(""+Estado_validar);
             }
 
             @Override
@@ -90,13 +90,13 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
 
     public void onClick(View v) {
         if (Estado_validar==1){
-                ((TextView) findViewById(R.id.BtnValidar_SigPregunta)).setText("Validar Respuesta");
-                mostarPregunta();
-                deshabilitarCambiosLayout((LinearLayout) findViewById(R.id.LayoutMultipleRespuesta),true);
-                deshabilitarCambiosRadioGroup((RadioGroup) findViewById(R.id.Rgbtn_button),true);
-                //((SeekBar) findViewById(R.id.Skb_BarraRespuestas)).setEnabled(false);
-                TipoPreguntaActual=Preguntas.get(0)[0];
-                Estado_validar=0;
+            ((TextView) findViewById(R.id.BtnValidar_SigPregunta)).setText("Validar Respuesta");
+            Estado_validar=0;
+            mostarPregunta();
+            deshabilitarCambiosLayout((LinearLayout) findViewById(R.id.LayoutMultipleRespuesta),true);
+            deshabilitarCambiosRadioGroup((RadioGroup) findViewById(R.id.Rgbtn_button),true);
+            //((SeekBar) findViewById(R.id.Skb_BarraRespuestas)).setEnabled(false);
+            TipoPreguntaActual=Preguntas.get(0)[0];
         }
         else{
             if(Estado_validar==0) {
@@ -121,9 +121,20 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                         }
                     break;
                     case "Seekbar":
+                        //calcular puntos
                         if(Integer.parseInt(((TextView) findViewById(R.id.TxtskbValorSeleccionado)).getText().toString())==Integer.parseInt((Preguntas.get(0)[Preguntas.get(0).length-1]))){
                             valorResuesta=suma_Acierto;
                         }
+                        //Corregir
+                        if(valorResuesta==suma_Fallo){
+                            /*Pintar Error*/
+                            ((SeekBar)  findViewById(R.id.Skb_BarraRespuestas)).setProgress(Integer.parseInt((Preguntas.get(0)[Preguntas.get(0).length-1]))-Integer.parseInt((Preguntas.get(0)[2])));
+                            int resultadoa=Integer.parseInt((Preguntas.get(0)[Preguntas.get(0).length-1]))-Integer.parseInt((Preguntas.get(0)[2]));
+                            ((TextView)findViewById(R.id.TxtskbValorSeleccionado)).setText("" +Preguntas.get(0)[Preguntas.get(0).length-1]);
+                        }else{
+
+                        }
+
                     break;
                     case "Multiple":
                         CheckBox ArrayRespCheckBox[]={((CheckBox)findViewById(R.id.ChkB_Resp1)),
