@@ -75,8 +75,6 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                 }else
                 {
                     seekBar.setProgress(Integer.parseInt(((TextView)findViewById(R.id.TxtskbValorSeleccionado)).getText().toString())-Integer.parseInt(((TextView)findViewById(R.id.TxtSeekbarMinValue)).getText().toString()));
-                    int valoue=Integer.parseInt(((TextView)findViewById(R.id.TxtskbValorSeleccionado)).getText().toString())-Integer.parseInt(((TextView)findViewById(R.id.TxtSeekbarMinValue)).getText().toString());
-                    ((TextView) findViewById(R.id.TxtDebug)).setText(""+valoue);
                 }
             }
 
@@ -147,6 +145,7 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
         else{
             if(Estado_validar==0) {
                 deshabilitarCambiosLayout((LinearLayout) findViewById(R.id.LayoutMultipleRespuesta),false);
+                deshabilitarCambiosLayout((LinearLayout) findViewById(R.id.LayoutRespuestaButtonImagen),true);
                 deshabilitarCambiosRadioGroup((RadioGroup) findViewById(R.id.Rgbtn_button),false);
                 deshabilitarCambiosLayout((LinearLayout) findViewById(R.id.LayoutSwitch),false);
 
@@ -173,14 +172,13 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                             valorResuesta=suma_Acierto;
                         }
                         //Corregir
-                        if(valorResuesta==suma_Fallo){
-                            /*Pintar Error*/
+                        /*if(valorResuesta==suma_Fallo){
                             ((SeekBar)  findViewById(R.id.Skb_BarraRespuestas)).setProgress(Integer.parseInt((Preguntas.get(0)[Preguntas.get(0).length-1]))-Integer.parseInt((Preguntas.get(0)[2])));
                             int resultadoa=Integer.parseInt((Preguntas.get(0)[Preguntas.get(0).length-1]))-Integer.parseInt((Preguntas.get(0)[2]));
                             ((TextView)findViewById(R.id.TxtskbValorSeleccionado)).setText("" +Preguntas.get(0)[Preguntas.get(0).length-1]);
                         }else{
 
-                        }
+                        }*/
                     break;
                     case "Multiple":
                         CheckBox ArrayRespCheckBox[]={((CheckBox)findViewById(R.id.ChkB_Resp1)),
@@ -224,6 +222,16 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                         }
                     break;
                 }
+                findViewById(R.id.Layout_AciertoFallo).setVisibility(View.VISIBLE);
+                if(valorResuesta==suma_Acierto){
+                    ((TextView) findViewById(R.id.Txt_RespuestaAcierto)).setText("ACIERTO");
+                    ((TextView) findViewById(R.id.Txt_RespuestaAcierto)).setBackgroundResource(R.drawable.panel_acierto);
+                }else{
+                    ((TextView) findViewById(R.id.Txt_RespuestaAcierto)).setText("FALLO");
+                    ((TextView) findViewById(R.id.Txt_RespuestaAcierto)).setBackgroundResource(R.drawable.panel_fallo);
+                }
+                ((TextView) findViewById(R.id.Txt_Explicacion)).setText(Preguntas.get(0)[Preguntas.get(0).length-2]);
+
                 Puntuacion=Math.max(Puntuacion+valorResuesta,0);
                 ((TextView) findViewById(R.id.TxtPuntuacion)).setText("Puntuación: "+Puntuacion);
 
@@ -258,7 +266,7 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
         findViewById(R.id.LayoutSwitch).setVisibility(View.GONE);
         findViewById(R.id.Layout_ImagenPregunta).setVisibility(View.GONE);
         findViewById(R.id.LayoutRespuestaButtonImagen).setVisibility(View.GONE);
-
+        findViewById(R.id.Layout_AciertoFallo).setVisibility(View.GONE);
         switch (Preguntas.get(0)[0]){
             case "Button":
                 findViewById(R.id.LayoutRespuestaButton).setVisibility(View.VISIBLE);
@@ -373,7 +381,7 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                 int imagenbuttonID;// = getResources().getIdentifier(Preguntas.get(0)[2] , "drawable", getPackageName());
                 findViewById(R.id.LayoutRespuestaButtonImagen).setVisibility(View.VISIBLE);
                 for(int i=0;i<n_respuestas;i++){
-                    PosicionesDisponiblesRespuesta.add(i+3);
+                    PosicionesDisponiblesRespuesta.add(i+2);
                 }
                 for(int i=0;i<n_respuestas;i++){
                     int randomNum = rnd.nextInt((PosicionesDisponiblesRespuesta.size()));

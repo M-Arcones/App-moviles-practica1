@@ -8,6 +8,7 @@
         <item>Resp2</item>
         <item>Resp3</item>
         <item>Resp4</item>
+        <item>Aqui se debe poner una explicacion extensa de la respuesta correcta</item>
         <item>Resp1</item>
     </string-array>
     <string-array name="pregunta1">
@@ -15,6 +16,7 @@
         <item>Pregunta 2</item>
         <item>10</item>
         <item>50</item>
+        <item>Aqui se debe poner una explicacion extensa de la respuesta correcta</item>
         <item>30</item>
     </string-array>
     <string-array name="pregunta2">
@@ -25,6 +27,7 @@
         <item>Resp12</item>
         <item>Resp13</item>
         <item>Resp14</item>
+        <item>Aqui se debe poner una explicacion extensa de la respuesta correcta</item>
         <item>Resp11</item>
     </string-array>
     <string-array name="pregunta3">
@@ -36,11 +39,13 @@
         <item>Resp4</item>
         <item>Resp5</item>
         <item>Resp6</item>
+        <item>Aqui se debe poner una explicacion extensa de la respuesta correcta</item>
         <item>Resp2|Resp5</item>
     </string-array>
     <string-array name="pregunta4">
         <item>Switch</item>
         <item>Pregunta 5</item>
+        <item>Aqui se debe poner una explicacion extensa de la respuesta correcta</item>
         <item>true</item>
     </string-array>
     <string-array name="pregunta5">
@@ -50,6 +55,7 @@
         <item>imagen2</item>
         <item>imagen3</item>
         <item>imagen4</item>
+        <item>Aqui se debe poner una explicacion extensa de la respuesta correcta</item>
         <item>imagen1</item>
     </string-array>
 

@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_mainmenu"
     android:visibility="visible"
-    tools:context=".QuestionManager"><![CDATA[>
+    tools:context=".QuestionManager"
+    tools:visibility="visible"><![CDATA[>
 
 
 
@@ -62,23 +63,11 @@
         android:id="@+id/BtnValidar_SigPregunta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
         android:text="Validar Respuesta"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/Layout_AciertoFallo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LayaoutRespuestas" />
-
-    <TextView
-        android:id="@+id/TxtDebug"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BtnValidar_SigPregunta" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
         android:id="@+id/Layout_ImagenPregunta"
@@ -367,6 +356,7 @@
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Layout_AciertoFallo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="206dp"
