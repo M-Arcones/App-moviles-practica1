@@ -36,7 +36,7 @@
     <LinearLayout
         android:id="@+id/LayoutPregunta"
         android:layout_width="394dp"
-        android:layout_height="180dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,23 +49,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text=" Aqui se imprime la pregunta " />
-
-        <LinearLayout
-            android:id="@+id/layout_ImagenPregunta"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/img_pregunta"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:scaleType="centerInside"
-                tools:srcCompat="@tools:sample/avatars" />
-
-        </LinearLayout>
 
     </LinearLayout>
 
@@ -80,15 +63,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LayaoutRespuestas" />
 
+    <TextView
+        android:id="@+id/TxtDebug"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BtnValidar_SigPregunta" />
+
+    <LinearLayout
+        android:id="@+id/Layout_ImagenPregunta"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/LayoutPregunta"
+        tools:layout_editor_absoluteX="9dp">
+
+        <ImageView
+            android:id="@+id/Img_pregunta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            tools:srcCompat="@drawable/imagen2"
+            tools:visibility="visible" />
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/LayaoutRespuestas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LayoutPregunta">
+        app:layout_constraintTop_toBottomOf="@+id/Layout_ImagenPregunta">
 
         <LinearLayout
             android:id="@+id/LayoutSwitch"
@@ -273,16 +287,5 @@
 
         </LinearLayout>
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/TxtDebug"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BtnValidar_SigPregunta" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

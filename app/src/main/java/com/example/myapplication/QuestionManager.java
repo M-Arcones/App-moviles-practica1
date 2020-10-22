@@ -3,9 +3,11 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -180,7 +182,9 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+    @SuppressLint("WrongViewCast")
     public void mostarPregunta(){
+        int n_respuestas=4;
         ((TextView) findViewById(R.id.TxtPregunta)).setText(Preguntas.get(0)[1]);
         List<Integer> PosicionesDisponiblesRespuesta = new ArrayList<Integer>();
         Random rnd = new Random();
@@ -189,11 +193,11 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
         findViewById(R.id.LayoutRespuestaSkb).setVisibility(View.GONE);
         findViewById(R.id.LayoutMultipleRespuesta).setVisibility(View.GONE);
         findViewById(R.id.LayoutSwitch).setVisibility(View.GONE);
+        findViewById(R.id.Layout_ImagenPregunta).setVisibility(View.GONE);
 
         switch (Preguntas.get(0)[0]){
             case "Button":
                 findViewById(R.id.LayoutRespuestaButton).setVisibility(View.VISIBLE);
-                int n_respuestas=4;
                 for(int i=0;i<n_respuestas;i++){
                     PosicionesDisponiblesRespuesta.add(i+2);
                 }
@@ -222,7 +226,7 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                 ((TextView) findViewById(R.id.TxtSeekbarMaxValue)).setText(Preguntas.get(0)[3]);
                 ((SeekBar)findViewById(R.id.Skb_BarraRespuestas)).setProgress((Integer.parseInt(Preguntas.get(0)[3])-Integer.parseInt(Preguntas.get(0)[2]))/2);
                 ((SeekBar)findViewById(R.id.Skb_BarraRespuestas)).setMax(Integer.parseInt(Preguntas.get(0)[3])-Integer.parseInt(Preguntas.get(0)[2]));
-                ((TextView) findViewById(R.id.TxtskbValorSeleccionado)).setText(""+(Integer.parseInt(Preguntas.get(0)[3])-Integer.parseInt(Preguntas.get(0)[2]))/2);
+                ((TextView) findViewById(R.id.TxtskbValorSeleccionado)).setText(""+((Integer.parseInt(Preguntas.get(0)[3])-Integer.parseInt(Preguntas.get(0)[2]))/2+Integer.parseInt(Preguntas.get(0)[2])));
                 valorMinimo=Integer.parseInt(Preguntas.get(0)[2]);
             break;
             case "Multiple":
@@ -256,8 +260,31 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                     PosicionesDisponiblesRespuesta.remove(randomNum);
                 }
             break;
-            case "Iamgen":
-                findViewById(R.id.LayoutRespuestaButton).setVisibility(View.INVISIBLE);
+            case "Imagen":
+                findViewById(R.id.LayoutRespuestaButton).setVisibility(View.VISIBLE);
+                findViewById(R.id.Layout_ImagenPregunta).setVisibility(View.VISIBLE);
+                ((ImageView)findViewById(R.id.Img_pregunta)).setImageResource(R.drawable.imagen2);
+                for(int i=0;i<n_respuestas;i++){
+                    PosicionesDisponiblesRespuesta.add(i+2);
+                }
+                for(int i=0;i<n_respuestas;i++){
+                    int randomNum = rnd.nextInt((PosicionesDisponiblesRespuesta.size()));
+                    switch (i){
+                        case 0:
+                            ((TextView) findViewById(R.id.RbtnResp1)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                            break;
+                        case 1:
+                            ((TextView) findViewById(R.id.RbtnResp2)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                            break;
+                        case 2:
+                            ((TextView) findViewById(R.id.RbtnResp3)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                            break;
+                        case 3:
+                            ((TextView) findViewById(R.id.RbtnResp4)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                            break;
+                    }
+                    PosicionesDisponiblesRespuesta.remove(randomNum);
+                }
             break;
             case "Switch":
                 findViewById(R.id.LayoutSwitch).setVisibility(View.VISIBLE);
