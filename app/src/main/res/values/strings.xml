@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">My Application</string>
-    <string name="num_preguntas">5</string>
+    <string name="num_preguntas">6</string>
     <string-array name="pregunta0">
         <item>Button</item>
         <item>Pregunta 1</item>
@@ -40,8 +40,17 @@
     </string-array>
     <string-array name="pregunta4">
         <item>Switch</item>
-        <item>Pregunta 4</item>
+        <item>Pregunta 5</item>
         <item>true</item>
+    </string-array>
+    <string-array name="pregunta5">
+        <item>ButtonImagen</item>
+        <item>Pregunta 6</item>
+        <item>Resp21</item>
+        <item>Resp22</item>
+        <item>Resp23</item>
+        <item>Resp24</item>
+        <item>Resp21</item>
     </string-array>
 
 </resources>

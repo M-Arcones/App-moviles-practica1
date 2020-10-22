@@ -77,16 +77,18 @@
 
     <LinearLayout
         android:id="@+id/Layout_ImagenPregunta"
-        android:layout_width="match_parent"
+        android:layout_width="394dp"
         android:layout_height="130dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/LayoutPregunta"
-        tools:layout_editor_absoluteX="9dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LayoutPregunta">
 
         <ImageView
             android:id="@+id/Img_pregunta"
-            android:layout_width="wrap_content"
+            android:layout_width="394dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:scaleType="centerInside"
@@ -104,6 +106,71 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Layout_ImagenPregunta">
+
+        <LinearLayout
+            android:id="@+id/LayoutRespuestaButtonImagen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/Rgbtn_buttonImagen"
+                android:layout_width="386dp"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/LayouthorizontalGbtnimagenes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/LayoutverticalGbtnimagenes1"
+                        android:layout_width="193dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/RbtnRespImagen1"
+                            android:layout_width="match_parent"
+                            android:layout_height="130dp"
+                            android:background="@drawable/imagen1"
+                            android:foregroundGravity="center|fill" />
+
+                        <RadioButton
+                            android:id="@+id/RbtnRespImagen3"
+                            android:layout_width="match_parent"
+                            android:layout_height="130dp"
+                            android:background="@drawable/imagen3"
+                            android:freezesText="false" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/LayoutverticalGbtnimagenes2"
+                        android:layout_width="193dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/RbtnRespImagen4"
+                            android:layout_width="match_parent"
+                            android:layout_height="130dp"
+                            android:background="@drawable/imagen2"
+                            android:foregroundGravity="center|fill" />
+
+                        <RadioButton
+                            android:id="@+id/RbtnRespImagen2"
+                            android:layout_width="match_parent"
+                            android:layout_height="130dp"
+                            android:background="@drawable/imagen4"
+                            android:foregroundGravity="fill_horizontal|center|fill_vertical" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RadioGroup>
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/LayoutSwitch"
@@ -287,6 +354,7 @@
             </RadioGroup>
 
         </LinearLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
