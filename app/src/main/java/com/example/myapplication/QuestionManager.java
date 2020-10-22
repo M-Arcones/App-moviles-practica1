@@ -208,9 +208,9 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                     break;
                     case "ButtonImagen":
                         RadioButton ArrayRespRadioButtonImagen[]= { ((RadioButton)findViewById(R.id.RbtnRespImagen1)),
-                                ((RadioButton)findViewById(R.id.RbtnRespImagen2)),
-                                ((RadioButton)findViewById(R.id.RbtnRespImagen3)),
-                                ((RadioButton)findViewById(R.id.RbtnRespImagen4))};
+                                                                    ((RadioButton)findViewById(R.id.RbtnRespImagen2)),
+                                                                    ((RadioButton)findViewById(R.id.RbtnRespImagen3)),
+                                                                    ((RadioButton)findViewById(R.id.RbtnRespImagen4))};
                         for (int i=0;i<4;i++){
                             if(ArrayRespRadioButtonImagen[i].isChecked()){
                                 if(ArrayRespRadioButtonImagen[i].getText().equals(Preguntas.get(0)[Preguntas.get(0).length-1])){
@@ -376,22 +376,28 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                     int randomNum = rnd.nextInt((PosicionesDisponiblesRespuesta.size()));
                     switch (i){
                         case 0:
-                            /*imagenID = getResources().getIdentifier(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)] , "drawable", getPackageName());
-                            ((RadioButton) findViewById(R.id.RbtnResp1)).setBackground();*/
-                            ((RadioButton) findViewById(R.id.RbtnResp1)).setChecked(false);
-                            ((TextView) findViewById(R.id.RbtnResp1)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                            imagenID = getResources().getIdentifier(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)] , "drawable", getPackageName());
+                            ((RadioButton) findViewById(R.id.RbtnRespImagen1)).setBackgroundResource(imagenID);
+                            ((RadioButton) findViewById(R.id.RbtnRespImagen1)).setChecked(false);
+                            ((TextView) findViewById(R.id.RbtnRespImagen1)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
                             break;
                         case 1:
-                            ((RadioButton) findViewById(R.id.RbtnResp2)).setChecked(false);
-                            ((TextView) findViewById(R.id.RbtnResp2)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                            imagenID = getResources().getIdentifier(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)] , "drawable", getPackageName());
+                            ((RadioButton) findViewById(R.id.RbtnRespImagen2)).setBackgroundResource(imagenID);
+                            ((RadioButton) findViewById(R.id.RbtnRespImagen2)).setChecked(false);
+                            ((TextView) findViewById(R.id.RbtnRespImagen2)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
                             break;
                         case 2:
-                            ((RadioButton) findViewById(R.id.RbtnResp3)).setChecked(false);
-                            ((TextView) findViewById(R.id.RbtnResp3)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                            imagenID = getResources().getIdentifier(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)] , "drawable", getPackageName());
+                            ((RadioButton) findViewById(R.id.RbtnRespImagen3)).setBackgroundResource(imagenID);
+                            ((RadioButton) findViewById(R.id.RbtnRespImagen3)).setChecked(false);
+                            ((TextView) findViewById(R.id.RbtnRespImagen3)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
                             break;
                         case 3:
-                            ((RadioButton) findViewById(R.id.RbtnResp4)).setChecked(false);
-                            ((TextView) findViewById(R.id.RbtnResp4)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                            imagenID = getResources().getIdentifier(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)] , "drawable", getPackageName());
+                            ((RadioButton) findViewById(R.id.RbtnRespImagen4)).setBackgroundResource(imagenID);
+                            ((RadioButton) findViewById(R.id.RbtnRespImagen4)).setChecked(false);
+                            ((TextView) findViewById(R.id.RbtnRespImagen4)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
                             break;
                     }
                     PosicionesDisponiblesRespuesta.remove(randomNum);
