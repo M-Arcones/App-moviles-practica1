@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.Intent;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,7 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
     int suma_Acierto=100;
     int suma_Fallo=-50;
     int Puntuacion=0;
+    int n_preguntas_totales;
     String TipoPreguntaActual;
     String Respuesta;
 
@@ -35,7 +37,7 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pregunta__radio_buttons);
 
-        int n_preguntas_totales = (int) getIntent().getSerializableExtra("n_preguntas_totales");
+        n_preguntas_totales = (int) getIntent().getSerializableExtra("n_preguntas_totales");
         ((TextView) findViewById(R.id.TxtPreguntasContestadas)).setText(""+n_preguntas_totales);
 
         Random rnd = new Random();
@@ -221,7 +223,11 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                     Estado_validar=2;
                 }
             }else{
-                /*Actividad resultados*/
+                Intent intent;
+                intent = new Intent(this, Resultados.class);
+                intent.putExtra("puntuacion", Puntuacion);
+                intent.putExtra("n_preguntas_totales", n_preguntas_totales);
+                startActivity(intent);
             }
         }
     }

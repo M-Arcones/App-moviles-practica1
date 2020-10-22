@@ -12,20 +12,20 @@
         style="@style/Widget.AppCompat.Button"
         android:layout_width="127dp"
         android:layout_height="58dp"
-        android:background="@drawable/button_background"
+        android:background="@drawable/button_mainmenu"
         android:filterTouchesWhenObscured="false"
         android:fontFamily="@font/cherry_cream_soda"
         android:onClick="onClick"
         android:text="Jugar"
         android:textAlignment="center"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.738" />
 
     <TextView
         android:id="@+id/txtVistaPrueba"
@@ -57,5 +57,22 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtVistaPrueba2" />
+
+    <TextView
+        android:id="@+id/Text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#009C6B6B"
+        android:fontFamily="@font/ruslan_display"
+        android:singleLine="false"
+        android:soundEffectsEnabled="false"
+        android:text="FOOTBALL QUIZ"
+        android:textAlignment="center"
+        android:textColor="#020202"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toTopOf="@+id/Btn_jugar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
