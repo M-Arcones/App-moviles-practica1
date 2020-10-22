@@ -7,13 +7,15 @@
     tools:context=".Resultados"
     android:background="@drawable/background_mainmenu"><![CDATA[>
 
+
+
     ]]>
 
     <TextView
         android:id="@+id/Text_Puntuacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_mainmenu"
+        android:layout_width="306dp"
+        android:layout_height="182dp"
+        android:background="@drawable/panel_text"
         android:fontFamily="@font/cherry_cream_soda"
         android:text="Tu puntuacion final es de 100 pts."
         android:textAlignment="center"
@@ -23,17 +25,17 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.183" />
+        app:layout_constraintVertical_bias="0.186" />
 
     <Button
         android:id="@+id/Button_VolverAJugar"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="140dp"
         android:layout_height="58dp"
-        android:background="@drawable/button_mainmenu"
+        android:background="@drawable/button"
         android:text="Volver A Jugar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

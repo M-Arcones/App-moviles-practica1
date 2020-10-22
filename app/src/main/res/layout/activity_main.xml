@@ -12,7 +12,7 @@
         style="@style/Widget.AppCompat.Button"
         android:layout_width="127dp"
         android:layout_height="58dp"
-        android:background="@drawable/button_mainmenu"
+        android:background="@drawable/button"
         android:filterTouchesWhenObscured="false"
         android:fontFamily="@font/cherry_cream_soda"
         android:onClick="onClick"
