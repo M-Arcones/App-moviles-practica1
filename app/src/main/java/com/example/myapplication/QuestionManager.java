@@ -4,17 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
+import android.widget.Switch;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -72,10 +73,10 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                     ((TextView) findViewById(R.id.TxtskbValorSeleccionado)).setText(""+calculo);
                 }else
                 {
-                    //seekBar.setProgress(Integer.parseInt(Preguntas.get(0)[Preguntas.get(0).length-1]));
-                    seekBar.setProgress(5);
+                    seekBar.setProgress(Integer.parseInt(((TextView)findViewById(R.id.TxtskbValorSeleccionado)).getText().toString())-Integer.parseInt(((TextView)findViewById(R.id.TxtSeekbarMinValue)).getText().toString()));
+                    int valoue=Integer.parseInt(((TextView)findViewById(R.id.TxtskbValorSeleccionado)).getText().toString())-Integer.parseInt(((TextView)findViewById(R.id.TxtSeekbarMinValue)).getText().toString());
+                    ((TextView) findViewById(R.id.TxtDebug)).setText(""+valoue);
                 }
-                ((TextView) findViewById(R.id.TxtDebug)).setText(""+Estado_validar);
             }
 
             @Override
@@ -92,23 +93,24 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
 
     public void onClick(View v) {
         if (Estado_validar==1){
-                ((TextView) findViewById(R.id.BtnValidar_SigPregunta)).setText("Validar Respuesta");
-                mostarPregunta();
-                deshabilitarCambiosLayout((LinearLayout) findViewById(R.id.LayoutMultipleRespuesta),true);
-                deshabilitarCambiosRadioGroup((RadioGroup) findViewById(R.id.Rgbtn_button),true);
-                //((SeekBar) findViewById(R.id.Skb_BarraRespuestas)).setEnabled(false);
-                TipoPreguntaActual=Preguntas.get(0)[0];
-                Estado_validar=0;
+            ((TextView) findViewById(R.id.BtnValidar_SigPregunta)).setText("Validar Respuesta");
+            Estado_validar=0;
+            mostarPregunta();
+            deshabilitarCambiosLayout((LinearLayout) findViewById(R.id.LayoutMultipleRespuesta),true);
+            deshabilitarCambiosLayout((LinearLayout) findViewById(R.id.LayoutSwitch),true);
+            deshabilitarCambiosRadioGroup((RadioGroup) findViewById(R.id.Rgbtn_button),true);
+            TipoPreguntaActual=Preguntas.get(0)[0];
         }
         else{
             if(Estado_validar==0) {
                 deshabilitarCambiosLayout((LinearLayout) findViewById(R.id.LayoutMultipleRespuesta),false);
                 deshabilitarCambiosRadioGroup((RadioGroup) findViewById(R.id.Rgbtn_button),false);
-                //((SeekBar) findViewById(R.id.Skb_BarraRespuestas)).setEnabled(false);
+                deshabilitarCambiosLayout((LinearLayout) findViewById(R.id.LayoutSwitch),false);
 
                 int valorResuesta=suma_Fallo;
                 switch (TipoPreguntaActual){
                     case "Button":
+                    case "Imagen":
                         RadioButton ArrayRespRadioButton[]= { ((RadioButton)findViewById(R.id.RbtnResp1)),
                                 ((RadioButton)findViewById(R.id.RbtnResp2)),
                                 ((RadioButton)findViewById(R.id.RbtnResp3)),
@@ -123,9 +125,20 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                         }
                     break;
                     case "Seekbar":
+                        //calcular puntos
                         if(Integer.parseInt(((TextView) findViewById(R.id.TxtskbValorSeleccionado)).getText().toString())==Integer.parseInt((Preguntas.get(0)[Preguntas.get(0).length-1]))){
                             valorResuesta=suma_Acierto;
                         }
+                        //Corregir
+                        if(valorResuesta==suma_Fallo){
+                            /*Pintar Error*/
+                            ((SeekBar)  findViewById(R.id.Skb_BarraRespuestas)).setProgress(Integer.parseInt((Preguntas.get(0)[Preguntas.get(0).length-1]))-Integer.parseInt((Preguntas.get(0)[2])));
+                            int resultadoa=Integer.parseInt((Preguntas.get(0)[Preguntas.get(0).length-1]))-Integer.parseInt((Preguntas.get(0)[2]));
+                            ((TextView)findViewById(R.id.TxtskbValorSeleccionado)).setText("" +Preguntas.get(0)[Preguntas.get(0).length-1]);
+                        }else{
+
+                        }
+
                     break;
                     case "Multiple":
                         CheckBox ArrayRespCheckBox[]={((CheckBox)findViewById(R.id.ChkB_Resp1)),
@@ -149,6 +162,11 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                         if(cont_respCorrrectas==N_respuestas){
                             valorResuesta=suma_Acierto;
                         }
+                    case "Switch":
+                        if (((Switch)findViewById(R.id.Switch)).isChecked()==Boolean.parseBoolean(Preguntas.get(0)[Preguntas.get(0).length-1])){
+                            valorResuesta=suma_Acierto;
+                        }
+                    break;
                 }
                 Puntuacion=Math.max(Puntuacion+valorResuesta,0);
                 ((TextView) findViewById(R.id.TxtPuntuacion)).setText("Puntuación: "+Puntuacion);
@@ -171,7 +189,9 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+    @SuppressLint("WrongViewCast")
     public void mostarPregunta(){
+        int n_respuestas=4;
         ((TextView) findViewById(R.id.TxtPregunta)).setText(Preguntas.get(0)[1]);
         List<Integer> PosicionesDisponiblesRespuesta = new ArrayList<Integer>();
         Random rnd = new Random();
@@ -179,11 +199,12 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
         findViewById(R.id.LayoutRespuestaButton).setVisibility(View.GONE);
         findViewById(R.id.LayoutRespuestaSkb).setVisibility(View.GONE);
         findViewById(R.id.LayoutMultipleRespuesta).setVisibility(View.GONE);
+        findViewById(R.id.LayoutSwitch).setVisibility(View.GONE);
+        findViewById(R.id.Layout_ImagenPregunta).setVisibility(View.GONE);
 
         switch (Preguntas.get(0)[0]){
             case "Button":
                 findViewById(R.id.LayoutRespuestaButton).setVisibility(View.VISIBLE);
-                int n_respuestas=4;
                 for(int i=0;i<n_respuestas;i++){
                     PosicionesDisponiblesRespuesta.add(i+2);
                 }
@@ -191,17 +212,21 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                     int randomNum = rnd.nextInt((PosicionesDisponiblesRespuesta.size()));
                     switch (i){
                         case 0:
+                            ((RadioButton) findViewById(R.id.RbtnResp1)).setChecked(false);
                             ((TextView) findViewById(R.id.RbtnResp1)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
-                        break;
+                            break;
                         case 1:
+                            ((RadioButton) findViewById(R.id.RbtnResp2)).setChecked(false);
                             ((TextView) findViewById(R.id.RbtnResp2)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
-                        break;
+                            break;
                         case 2:
+                            ((RadioButton) findViewById(R.id.RbtnResp3)).setChecked(false);
                             ((TextView) findViewById(R.id.RbtnResp3)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
-                        break;
+                            break;
                         case 3:
+                            ((RadioButton) findViewById(R.id.RbtnResp4)).setChecked(false);
                             ((TextView) findViewById(R.id.RbtnResp4)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
-                        break;
+                            break;
                     }
                     PosicionesDisponiblesRespuesta.remove(randomNum);
                 }
@@ -212,7 +237,7 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                 ((TextView) findViewById(R.id.TxtSeekbarMaxValue)).setText(Preguntas.get(0)[3]);
                 ((SeekBar)findViewById(R.id.Skb_BarraRespuestas)).setProgress((Integer.parseInt(Preguntas.get(0)[3])-Integer.parseInt(Preguntas.get(0)[2]))/2);
                 ((SeekBar)findViewById(R.id.Skb_BarraRespuestas)).setMax(Integer.parseInt(Preguntas.get(0)[3])-Integer.parseInt(Preguntas.get(0)[2]));
-                ((TextView) findViewById(R.id.TxtskbValorSeleccionado)).setText(""+(Integer.parseInt(Preguntas.get(0)[3])-Integer.parseInt(Preguntas.get(0)[2]))/2);
+                ((TextView) findViewById(R.id.TxtskbValorSeleccionado)).setText(""+((Integer.parseInt(Preguntas.get(0)[3])-Integer.parseInt(Preguntas.get(0)[2]))/2+Integer.parseInt(Preguntas.get(0)[2])));
                 valorMinimo=Integer.parseInt(Preguntas.get(0)[2]);
             break;
             case "Multiple":
@@ -225,29 +250,67 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                     int randomNum = rnd.nextInt((PosicionesDisponiblesRespuesta.size()));
                     switch (i) {
                         case 0:
+                            ((CheckBox) findViewById(R.id.ChkB_Resp1)).setChecked(false);
                             ((TextView) findViewById(R.id.ChkB_Resp1)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
                             break;
                         case 1:
+                            ((CheckBox) findViewById(R.id.ChkB_Resp2)).setChecked(false);
                             ((TextView) findViewById(R.id.ChkB_Resp2)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
                             break;
                         case 2:
+                            ((CheckBox) findViewById(R.id.ChkB_Resp3)).setChecked(false);
                             ((TextView) findViewById(R.id.ChkB_Resp3)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
                             break;
                         case 3:
+                            ((CheckBox) findViewById(R.id.ChkB_Resp4)).setChecked(false);
                             ((TextView) findViewById(R.id.ChkB_Resp4)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
                             break;
                         case 4:
+                            ((CheckBox) findViewById(R.id.ChkB_Resp5)).setChecked(false);
                             ((TextView) findViewById(R.id.ChkB_Resp5)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
                             break;
                         case 5:
+                            ((CheckBox) findViewById(R.id.ChkB_Resp6)).setChecked(false);
                             ((TextView) findViewById(R.id.ChkB_Resp6)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
                             break;
                     }
                     PosicionesDisponiblesRespuesta.remove(randomNum);
                 }
             break;
-            case "Iamgen":
-                findViewById(R.id.LayoutRespuestaButton).setVisibility(View.INVISIBLE);
+            case "Imagen":
+                findViewById(R.id.LayoutRespuestaButton).setVisibility(View.VISIBLE);
+                findViewById(R.id.Layout_ImagenPregunta).setVisibility(View.VISIBLE);
+                int imagenID = getResources().getIdentifier(Preguntas.get(0)[2] , "drawable", getPackageName());
+                ((ImageView)findViewById(R.id.Img_pregunta)).setImageResource(imagenID);
+                for(int i=0;i<n_respuestas;i++){
+                    PosicionesDisponiblesRespuesta.add(i+3);
+                }
+                for(int i=0;i<n_respuestas;i++){
+                    int randomNum = rnd.nextInt((PosicionesDisponiblesRespuesta.size()));
+                    switch (i){
+                        case 0:
+                            ((RadioButton) findViewById(R.id.RbtnResp1)).setChecked(false);
+                            ((TextView) findViewById(R.id.RbtnResp1)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                            break;
+                        case 1:
+                            ((RadioButton) findViewById(R.id.RbtnResp2)).setChecked(false);
+                            ((TextView) findViewById(R.id.RbtnResp2)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                            break;
+                        case 2:
+                            ((RadioButton) findViewById(R.id.RbtnResp3)).setChecked(false);
+                            ((TextView) findViewById(R.id.RbtnResp3)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                            break;
+                        case 3:
+                            ((RadioButton) findViewById(R.id.RbtnResp4)).setChecked(false);
+                            ((TextView) findViewById(R.id.RbtnResp4)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                            break;
+                    }
+                    PosicionesDisponiblesRespuesta.remove(randomNum);
+                }
+            break;
+            case "Switch":
+                findViewById(R.id.LayoutSwitch).setVisibility(View.VISIBLE);
+                ((Switch)findViewById(R.id.Switch)).setChecked(true);
             break;
         }
     }

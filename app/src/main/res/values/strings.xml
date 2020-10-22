@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">My Application</string>
-    <string name="num_preguntas">4</string>
+    <string name="num_preguntas">5</string>
     <string-array name="pregunta0">
         <item>Button</item>
         <item>Pregunta 1</item>
@@ -15,16 +15,17 @@
         <item>Pregunta 2</item>
         <item>10</item>
         <item>50</item>
-        <item>15</item>
+        <item>30</item>
     </string-array>
     <string-array name="pregunta2">
         <item>Imagen</item>
         <item>Pregunta 3</item>
-        <item>Resp1</item>
-        <item>Resp2</item>
-        <item>Resp3</item>
-        <item>Resp4</item>
-        <item>Resp_Correcta</item>
+        <item>imagen2</item>
+        <item>Resp11</item>
+        <item>Resp12</item>
+        <item>Resp13</item>
+        <item>Resp14</item>
+        <item>Resp11</item>
     </string-array>
     <string-array name="pregunta3">
         <item>Multiple</item>
@@ -37,6 +38,7 @@
         <item>Resp6</item>
         <item>Resp2|Resp5</item>
     </string-array>
+
     <string name="title_activity_resultados">Resultados</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -46,5 +48,11 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string-array name="pregunta4">
+        <item>Switch</item>
+        <item>Pregunta 4</item>
+        <item>true</item>
+    </string-array>
 
 </resources>
