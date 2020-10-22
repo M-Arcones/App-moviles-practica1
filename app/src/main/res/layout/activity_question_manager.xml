@@ -4,9 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_mainmenu"
     android:visibility="visible"
-    tools:context=".QuestionManager"
-    android:background="@drawable/background_mainmenu">>
+    tools:context=".QuestionManager"><![CDATA[>
+
+
+
+    ]]>
 
     <LinearLayout
         android:id="@+id/LayoutMarcador"
@@ -356,5 +360,45 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="206dp"
+        tools:layout_editor_absoluteY="299dp">
+
+        <TextView
+            android:id="@+id/Txt_Explicacion"
+            android:layout_width="279dp"
+            android:layout_height="125dp"
+            android:background="@drawable/panel_text"
+            android:fontFamily="@font/cherry_cream_soda"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="TextView"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Txt_RespuestaAcierto"
+            app:layout_constraintVertical_bias="0.13999999" />
+
+        <TextView
+            android:id="@+id/Txt_RespuestaAcierto"
+            android:layout_width="236dp"
+            android:layout_height="100dp"
+            android:background="@drawable/panel_fallo"
+            android:fontFamily="@font/cherry_cream_soda"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Acierto"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.302" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
