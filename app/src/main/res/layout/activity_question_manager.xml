@@ -27,6 +27,7 @@
             android:layout_width="298dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="#FFFFFF"
             tools:text="1/40" />
 
         <TextView
@@ -139,14 +140,16 @@
                             android:layout_width="match_parent"
                             android:layout_height="130dp"
                             android:background="@drawable/imagen5"
-                            android:foregroundGravity="center|fill" />
+                            android:foregroundGravity="center|fill"
+                            android:textSize="0.0sp" />
 
                         <RadioButton
                             android:id="@+id/RbtnRespImagen3"
                             android:layout_width="match_parent"
                             android:layout_height="130dp"
                             android:background="@drawable/imagen3"
-                            android:freezesText="false" />
+                            android:freezesText="false"
+                            android:textSize="0.0sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -160,14 +163,16 @@
                             android:layout_width="match_parent"
                             android:layout_height="130dp"
                             android:background="@drawable/imagen2"
-                            android:foregroundGravity="center|fill" />
+                            android:foregroundGravity="center|fill"
+                            android:textSize="0.0sp" />
 
                         <RadioButton
                             android:id="@+id/RbtnRespImagen2"
                             android:layout_width="match_parent"
                             android:layout_height="130dp"
                             android:background="@drawable/imagen4"
-                            android:foregroundGravity="fill_horizontal|center|fill_vertical" />
+                            android:foregroundGravity="fill_horizontal|center|fill_vertical"
+                            android:textSize="0.0sp" />
 
                     </LinearLayout>
 

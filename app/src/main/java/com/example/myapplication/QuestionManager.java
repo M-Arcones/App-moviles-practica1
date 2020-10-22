@@ -31,6 +31,7 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
     int n_preguntas_totales;
     String TipoPreguntaActual;
     String Respuesta;
+    int n_pregunta=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_question_manager);
 
         n_preguntas_totales = (int) getIntent().getSerializableExtra("n_preguntas_totales");
-        ((TextView) findViewById(R.id.TxtPreguntasContestadas)).setText(""+n_preguntas_totales);
+        ((TextView)findViewById(R.id.TxtPreguntasContestadas)).setText(n_pregunta+"/"+n_preguntas_totales);
 
         Random rnd = new Random();
         rnd.setSeed(6);//cambiar a la hora
@@ -140,6 +141,8 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
             deshabilitarCambiosLayout((LinearLayout) findViewById(R.id.LayoutSwitch),true);
             deshabilitarCambiosRadioGroup((RadioGroup) findViewById(R.id.Rgbtn_button),true);
             TipoPreguntaActual=Preguntas.get(0)[0];
+            n_pregunta++;
+            ((TextView)findViewById(R.id.TxtPreguntasContestadas)).setText(n_pregunta+"/"+n_preguntas_totales);
         }
         else{
             if(Estado_validar==0) {
