@@ -108,6 +108,7 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                 int valorResuesta=suma_Fallo;
                 switch (TipoPreguntaActual){
                     case "Button":
+                    case "Imagen":
                         RadioButton ArrayRespRadioButton[]= { ((RadioButton)findViewById(R.id.RbtnResp1)),
                                 ((RadioButton)findViewById(R.id.RbtnResp2)),
                                 ((RadioButton)findViewById(R.id.RbtnResp3)),
@@ -205,17 +206,21 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                     int randomNum = rnd.nextInt((PosicionesDisponiblesRespuesta.size()));
                     switch (i){
                         case 0:
+                            ((RadioButton) findViewById(R.id.RbtnResp1)).setChecked(false);
                             ((TextView) findViewById(R.id.RbtnResp1)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
-                        break;
+                            break;
                         case 1:
+                            ((RadioButton) findViewById(R.id.RbtnResp2)).setChecked(false);
                             ((TextView) findViewById(R.id.RbtnResp2)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
-                        break;
+                            break;
                         case 2:
+                            ((RadioButton) findViewById(R.id.RbtnResp3)).setChecked(false);
                             ((TextView) findViewById(R.id.RbtnResp3)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
-                        break;
+                            break;
                         case 3:
+                            ((RadioButton) findViewById(R.id.RbtnResp4)).setChecked(false);
                             ((TextView) findViewById(R.id.RbtnResp4)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
-                        break;
+                            break;
                     }
                     PosicionesDisponiblesRespuesta.remove(randomNum);
                 }
@@ -239,21 +244,27 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                     int randomNum = rnd.nextInt((PosicionesDisponiblesRespuesta.size()));
                     switch (i) {
                         case 0:
+                            ((CheckBox) findViewById(R.id.ChkB_Resp1)).setChecked(false);
                             ((TextView) findViewById(R.id.ChkB_Resp1)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
                             break;
                         case 1:
+                            ((CheckBox) findViewById(R.id.ChkB_Resp2)).setChecked(false);
                             ((TextView) findViewById(R.id.ChkB_Resp2)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
                             break;
                         case 2:
+                            ((CheckBox) findViewById(R.id.ChkB_Resp3)).setChecked(false);
                             ((TextView) findViewById(R.id.ChkB_Resp3)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
                             break;
                         case 3:
+                            ((CheckBox) findViewById(R.id.ChkB_Resp4)).setChecked(false);
                             ((TextView) findViewById(R.id.ChkB_Resp4)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
                             break;
                         case 4:
+                            ((CheckBox) findViewById(R.id.ChkB_Resp5)).setChecked(false);
                             ((TextView) findViewById(R.id.ChkB_Resp5)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
                             break;
                         case 5:
+                            ((CheckBox) findViewById(R.id.ChkB_Resp6)).setChecked(false);
                             ((TextView) findViewById(R.id.ChkB_Resp6)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
                             break;
                     }
@@ -263,23 +274,28 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
             case "Imagen":
                 findViewById(R.id.LayoutRespuestaButton).setVisibility(View.VISIBLE);
                 findViewById(R.id.Layout_ImagenPregunta).setVisibility(View.VISIBLE);
-                ((ImageView)findViewById(R.id.Img_pregunta)).setImageResource(R.drawable.imagen2);
+                int imagenID = getResources().getIdentifier(Preguntas.get(0)[2] , "drawable", getPackageName());
+                ((ImageView)findViewById(R.id.Img_pregunta)).setImageResource(imagenID);
                 for(int i=0;i<n_respuestas;i++){
-                    PosicionesDisponiblesRespuesta.add(i+2);
+                    PosicionesDisponiblesRespuesta.add(i+3);
                 }
                 for(int i=0;i<n_respuestas;i++){
                     int randomNum = rnd.nextInt((PosicionesDisponiblesRespuesta.size()));
                     switch (i){
                         case 0:
+                            ((RadioButton) findViewById(R.id.RbtnResp1)).setChecked(false);
                             ((TextView) findViewById(R.id.RbtnResp1)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
                             break;
                         case 1:
+                            ((RadioButton) findViewById(R.id.RbtnResp2)).setChecked(false);
                             ((TextView) findViewById(R.id.RbtnResp2)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
                             break;
                         case 2:
+                            ((RadioButton) findViewById(R.id.RbtnResp3)).setChecked(false);
                             ((TextView) findViewById(R.id.RbtnResp3)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
                             break;
                         case 3:
+                            ((RadioButton) findViewById(R.id.RbtnResp4)).setChecked(false);
                             ((TextView) findViewById(R.id.RbtnResp4)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
                             break;
                     }

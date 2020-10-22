@@ -20,11 +20,12 @@
     <string-array name="pregunta2">
         <item>Imagen</item>
         <item>Pregunta 3</item>
-        <item>Resp1</item>
-        <item>Resp2</item>
-        <item>Resp3</item>
-        <item>Resp4</item>
-        <item>Resp_Correcta</item>
+        <item>imagen2</item>
+        <item>Resp11</item>
+        <item>Resp12</item>
+        <item>Resp13</item>
+        <item>Resp14</item>
+        <item>Resp11</item>
     </string-array>
     <string-array name="pregunta3">
         <item>Multiple</item>
