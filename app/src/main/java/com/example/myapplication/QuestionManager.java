@@ -35,7 +35,7 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pregunta__radio_buttons);
+        setContentView(R.layout.activity_question_manager);
 
         n_preguntas_totales = (int) getIntent().getSerializableExtra("n_preguntas_totales");
         ((TextView) findViewById(R.id.TxtPreguntasContestadas)).setText(""+n_preguntas_totales);
