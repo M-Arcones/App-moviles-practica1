@@ -84,8 +84,50 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
             }
-
         });
+
+        RadioButton RbtnRespImagen1 = (RadioButton) findViewById(R.id.RbtnRespImagen1);
+        RadioButton RbtnRespImagen2 = (RadioButton) findViewById(R.id.RbtnRespImagen2);
+        RadioButton RbtnRespImagen3 = (RadioButton) findViewById(R.id.RbtnRespImagen3);
+        RadioButton RbtnRespImagen4 = (RadioButton) findViewById(R.id.RbtnRespImagen4);
+
+        RbtnRespImagen1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                ((RadioButton) findViewById(R.id.RbtnRespImagen1)).setChecked(true);
+                ((RadioButton) findViewById(R.id.RbtnRespImagen2)).setChecked(false);
+                ((RadioButton) findViewById(R.id.RbtnRespImagen3)).setChecked(false);
+                ((RadioButton) findViewById(R.id.RbtnRespImagen4)).setChecked(false);
+            }
+        });
+
+        RbtnRespImagen2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                ((RadioButton) findViewById(R.id.RbtnRespImagen1)).setChecked(false);
+                ((RadioButton) findViewById(R.id.RbtnRespImagen2)).setChecked(true);
+                ((RadioButton) findViewById(R.id.RbtnRespImagen3)).setChecked(false);
+                ((RadioButton) findViewById(R.id.RbtnRespImagen4)).setChecked(false);
+            }
+        });
+
+        RbtnRespImagen3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                ((RadioButton) findViewById(R.id.RbtnRespImagen1)).setChecked(false);
+                ((RadioButton) findViewById(R.id.RbtnRespImagen2)).setChecked(false);
+                ((RadioButton) findViewById(R.id.RbtnRespImagen3)).setChecked(true);
+                ((RadioButton) findViewById(R.id.RbtnRespImagen4)).setChecked(false);
+            }
+        });
+
+        RbtnRespImagen4.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                ((RadioButton) findViewById(R.id.RbtnRespImagen1)).setChecked(false);
+                ((RadioButton) findViewById(R.id.RbtnRespImagen2)).setChecked(false);
+                ((RadioButton) findViewById(R.id.RbtnRespImagen3)).setChecked(false);
+                ((RadioButton) findViewById(R.id.RbtnRespImagen4)).setChecked(true);
+            }
+        });
+
+
 
     }
 
@@ -95,6 +137,7 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
             Estado_validar=0;
             mostarPregunta();
             deshabilitarCambiosLayout((LinearLayout) findViewById(R.id.LayoutMultipleRespuesta),true);
+            deshabilitarCambiosLayout((LinearLayout) findViewById(R.id.LayoutRespuestaButtonImagen),true);
             deshabilitarCambiosLayout((LinearLayout) findViewById(R.id.LayoutSwitch),true);
             deshabilitarCambiosRadioGroup((RadioGroup) findViewById(R.id.Rgbtn_button),true);
             TipoPreguntaActual=Preguntas.get(0)[0];
@@ -195,6 +238,7 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
         findViewById(R.id.LayoutMultipleRespuesta).setVisibility(View.GONE);
         findViewById(R.id.LayoutSwitch).setVisibility(View.GONE);
         findViewById(R.id.Layout_ImagenPregunta).setVisibility(View.GONE);
+        findViewById(R.id.LayoutRespuestaButtonImagen).setVisibility(View.GONE);
 
         switch (Preguntas.get(0)[0]){
             case "Button":
@@ -306,6 +350,34 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                 findViewById(R.id.LayoutSwitch).setVisibility(View.VISIBLE);
                 ((Switch)findViewById(R.id.Switch)).setChecked(true);
             break;
+            case "ButtonImagen":
+                findViewById(R.id.LayoutRespuestaButtonImagen).setVisibility(View.VISIBLE);
+                for(int i=0;i<n_respuestas;i++){
+                    PosicionesDisponiblesRespuesta.add(i+3);
+                }
+                for(int i=0;i<n_respuestas;i++){
+                    int randomNum = rnd.nextInt((PosicionesDisponiblesRespuesta.size()));
+                    switch (i){
+                        case 0:
+                            ((RadioButton) findViewById(R.id.RbtnResp1)).setChecked(false);
+                            ((TextView) findViewById(R.id.RbtnResp1)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                            break;
+                        case 1:
+                            ((RadioButton) findViewById(R.id.RbtnResp2)).setChecked(false);
+                            ((TextView) findViewById(R.id.RbtnResp2)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                            break;
+                        case 2:
+                            ((RadioButton) findViewById(R.id.RbtnResp3)).setChecked(false);
+                            ((TextView) findViewById(R.id.RbtnResp3)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                            break;
+                        case 3:
+                            ((RadioButton) findViewById(R.id.RbtnResp4)).setChecked(false);
+                            ((TextView) findViewById(R.id.RbtnResp4)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
+                            break;
+                    }
+                    PosicionesDisponiblesRespuesta.remove(randomNum);
+                }
+                break;
         }
     }
 
