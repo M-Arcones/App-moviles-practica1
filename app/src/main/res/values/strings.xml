@@ -38,6 +38,20 @@
         <item>Resp6</item>
         <item>Resp2|Resp5</item>
     </string-array>
+    <string-array name="pregunta4">
+        <item>Switch</item>
+        <item>Pregunta 5</item>
+        <item>true</item>
+    </string-array>
+    <string-array name="pregunta5">
+        <item>ButtonImagen</item>
+        <item>Pregunta 6</item>
+        <item>imagen1</item>
+        <item>imagen2</item>
+        <item>imagen3</item>
+        <item>imagen4</item>
+        <item>imagen1</item>
+    </string-array>
 
     <string name="title_activity_resultados">Resultados</string>
     <!-- Strings used for fragments for navigation -->
@@ -48,20 +62,4 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-
-    <string-array name="pregunta4">
-        <item>Switch</item>
-        <item>Pregunta 5</item>
-        <item>true</item>
-    </string-array>
-    <string-array name="pregunta5">
-        <item>ButtonImagen</item>
-        <item>Pregunta 6</item>
-        <item>Resp21</item>
-        <item>Resp22</item>
-        <item>Resp23</item>
-        <item>Resp24</item>
-        <item>Resp21</item>
-    </string-array>
-
 </resources>

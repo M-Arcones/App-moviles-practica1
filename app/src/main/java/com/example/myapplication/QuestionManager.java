@@ -128,9 +128,6 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                 ((RadioButton) findViewById(R.id.RbtnRespImagen4)).setChecked(true);
             }
         });
-
-
-
     }
 
     public void onClick(View v) {
@@ -181,7 +178,6 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                         }else{
 
                         }
-
                     break;
                     case "Multiple":
                         CheckBox ArrayRespCheckBox[]={((CheckBox)findViewById(R.id.ChkB_Resp1)),
@@ -208,6 +204,20 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                     case "Switch":
                         if (((Switch)findViewById(R.id.Switch)).isChecked()==Boolean.parseBoolean(Preguntas.get(0)[Preguntas.get(0).length-1])){
                             valorResuesta=suma_Acierto;
+                        }
+                    break;
+                    case "ButtonImagen":
+                        RadioButton ArrayRespRadioButtonImagen[]= { ((RadioButton)findViewById(R.id.RbtnRespImagen1)),
+                                ((RadioButton)findViewById(R.id.RbtnRespImagen2)),
+                                ((RadioButton)findViewById(R.id.RbtnRespImagen3)),
+                                ((RadioButton)findViewById(R.id.RbtnRespImagen4))};
+                        for (int i=0;i<4;i++){
+                            if(ArrayRespRadioButtonImagen[i].isChecked()){
+                                if(ArrayRespRadioButtonImagen[i].getText().equals(Preguntas.get(0)[Preguntas.get(0).length-1])){
+                                    valorResuesta=suma_Acierto;
+                                }
+                                i=4;
+                            }
                         }
                     break;
                 }
@@ -357,6 +367,7 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                 ((Switch)findViewById(R.id.Switch)).setChecked(true);
             break;
             case "ButtonImagen":
+                int imagenbuttonID;// = getResources().getIdentifier(Preguntas.get(0)[2] , "drawable", getPackageName());
                 findViewById(R.id.LayoutRespuestaButtonImagen).setVisibility(View.VISIBLE);
                 for(int i=0;i<n_respuestas;i++){
                     PosicionesDisponiblesRespuesta.add(i+3);
@@ -365,6 +376,8 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                     int randomNum = rnd.nextInt((PosicionesDisponiblesRespuesta.size()));
                     switch (i){
                         case 0:
+                            /*imagenID = getResources().getIdentifier(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)] , "drawable", getPackageName());
+                            ((RadioButton) findViewById(R.id.RbtnResp1)).setBackground();*/
                             ((RadioButton) findViewById(R.id.RbtnResp1)).setChecked(false);
                             ((TextView) findViewById(R.id.RbtnResp1)).setText(Preguntas.get(0)[PosicionesDisponiblesRespuesta.get(randomNum)]);
                             break;
