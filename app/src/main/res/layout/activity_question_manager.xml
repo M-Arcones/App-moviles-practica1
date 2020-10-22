@@ -23,6 +23,7 @@
             android:layout_width="298dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="#FFFFFF"
             tools:text="1/40" />
 
         <TextView
