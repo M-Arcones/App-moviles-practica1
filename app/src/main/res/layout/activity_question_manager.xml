@@ -4,14 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_mainmenu"
     android:visibility="visible"
+    android:background="@drawable/background_mainmenu"
     tools:context=".QuestionManager"
-    tools:visibility="visible"><![CDATA[>
-
-
-
-    ]]>
+    tools:visibility="visible">
 
     <LinearLayout
         android:id="@+id/LayoutMarcador"
@@ -86,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:scaleType="centerInside"
-            tools:srcCompat="@drawable/imagen2"
+            tools:srcCompat="@raw/imagen2"
             tools:visibility="visible" />
     </LinearLayout>
 
@@ -128,7 +124,7 @@
                             android:id="@+id/RbtnRespImagen1"
                             android:layout_width="match_parent"
                             android:layout_height="130dp"
-                            android:background="@drawable/imagen5"
+                            android:background="@raw/imagen5"
                             android:foregroundGravity="center|fill"
                             android:textSize="0.0sp" />
 
@@ -136,7 +132,7 @@
                             android:id="@+id/RbtnRespImagen3"
                             android:layout_width="match_parent"
                             android:layout_height="130dp"
-                            android:background="@drawable/imagen3"
+                            android:background="@raw/imagen3"
                             android:freezesText="false"
                             android:textSize="0.0sp" />
                     </LinearLayout>
@@ -151,7 +147,7 @@
                             android:id="@+id/RbtnRespImagen4"
                             android:layout_width="match_parent"
                             android:layout_height="130dp"
-                            android:background="@drawable/imagen2"
+                            android:background="@raw/imagen2"
                             android:foregroundGravity="center|fill"
                             android:textSize="0.0sp" />
 
@@ -159,7 +155,7 @@
                             android:id="@+id/RbtnRespImagen2"
                             android:layout_width="match_parent"
                             android:layout_height="130dp"
-                            android:background="@drawable/imagen4"
+                            android:background="@raw/imagen4"
                             android:foregroundGravity="fill_horizontal|center|fill_vertical"
                             android:textSize="0.0sp" />
 

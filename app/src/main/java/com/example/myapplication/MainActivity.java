@@ -3,6 +3,8 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -10,12 +12,21 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button buttonPlay;
     private Animation scaleUp, scaleDown;
+    private ArrayList<Pregunta> preguntas = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +41,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void onClick(View v) {
-        ArrayList<String[]> Preguntas = new ArrayList<String[]>();
         buttonPlay.startAnimation(scaleDown);
         buttonPlay.startAnimation(scaleUp);
 
-        //int n_preg=Integer.parseInt(getResources().getString(this.getResources().getIdentifier("num_preguntas", "string", this.getPackageName())));
-        int n_preguntas_totales=Integer.parseInt(getResources().getString((this.getResources().getIdentifier("num_preguntas", "string", this.getPackageName()))));
         Intent intent;
         intent = new Intent(this, QuestionManager.class);
-        intent.putExtra("n_preguntas_totales", n_preguntas_totales);
         startActivity(intent);
     }
 }
