@@ -4,392 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:visibility="visible"
     android:background="@drawable/background_mainmenu"
+    android:visibility="visible"
     tools:context=".QuestionManager"
     tools:visibility="visible">
 
-    <LinearLayout
-        android:id="@+id/LayoutMarcador"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.example.myapplication.Marcador"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/fragment2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_marcador" />
 
-        <TextView
-            android:id="@+id/TxtPreguntasContestadas"
-            android:layout_width="298dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="#FFFFFF"
-            tools:text="1/40" />
-
-        <TextView
-            android:id="@+id/TxtPuntuacion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Puntuación: 0"
-            android:textAlignment="textEnd" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LayoutPregunta"
-        android:layout_width="394dp"
-        android:layout_height="wrap_content"
+    <fragment
+        android:id="@+id/fragment2"
+        android:name="com.example.myapplication.Question"
+        android:layout_width="409dp"
+        android:layout_height="564dp"
         android:layout_marginTop="40dp"
-        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_question" />
+
+    <fragment
+        android:id="@+id/fragment3"
+        android:name="com.example.myapplication.BotonQuestion"
+        android:layout_width="409dp"
+        android:layout_height="125dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LayoutMarcador">
-
-        <TextView
-            android:id="@+id/TxtPregunta"
-            android:layout_width="386dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=" Aqui se imprime la pregunta " />
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/BtnValidar_SigPregunta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:text="Validar Respuesta"
-        app:layout_constraintBottom_toBottomOf="@+id/Layout_AciertoFallo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/Layout_ImagenPregunta"
-        android:layout_width="394dp"
-        android:layout_height="130dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LayoutPregunta">
-
-        <ImageView
-            android:id="@+id/Img_pregunta"
-            android:layout_width="394dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:scaleType="centerInside"
-            tools:srcCompat="@raw/imagen2"
-            tools:visibility="visible" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LayaoutRespuestas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Layout_ImagenPregunta">
-
-        <LinearLayout
-            android:id="@+id/LayoutRespuestaButtonImagen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <RadioGroup
-                android:id="@+id/Rgbtn_buttonImagen"
-                android:layout_width="386dp"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:id="@+id/LayouthorizontalGbtnimagenes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:id="@+id/LayoutverticalGbtnimagenes1"
-                        android:layout_width="193dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <RadioButton
-                            android:id="@+id/RbtnRespImagen1"
-                            android:layout_width="match_parent"
-                            android:layout_height="130dp"
-                            android:background="@raw/imagen5"
-                            android:foregroundGravity="center|fill"
-                            android:textSize="0.0sp" />
-
-                        <RadioButton
-                            android:id="@+id/RbtnRespImagen3"
-                            android:layout_width="match_parent"
-                            android:layout_height="130dp"
-                            android:background="@raw/imagen3"
-                            android:freezesText="false"
-                            android:textSize="0.0sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/LayoutverticalGbtnimagenes2"
-                        android:layout_width="193dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <RadioButton
-                            android:id="@+id/RbtnRespImagen4"
-                            android:layout_width="match_parent"
-                            android:layout_height="130dp"
-                            android:background="@raw/imagen2"
-                            android:foregroundGravity="center|fill"
-                            android:textSize="0.0sp" />
-
-                        <RadioButton
-                            android:id="@+id/RbtnRespImagen2"
-                            android:layout_width="match_parent"
-                            android:layout_height="130dp"
-                            android:background="@raw/imagen4"
-                            android:foregroundGravity="fill_horizontal|center|fill_vertical"
-                            android:textSize="0.0sp" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </RadioGroup>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/LayoutSwitch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            tools:visibility="gone">
-
-            <TextView
-                android:id="@+id/TxtFalse"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="False"
-                tools:layout_conversion_absoluteHeight="19dp"
-                tools:layout_conversion_absoluteWidth="33dp"
-                tools:layout_editor_absoluteX="88dp"
-                tools:layout_editor_absoluteY="193dp" />
-
-            <Switch
-                android:id="@+id/Switch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                tools:checked="true"
-                tools:layout_conversion_absoluteHeight="27dp"
-                tools:layout_conversion_absoluteWidth="46dp"
-                tools:layout_editor_absoluteX="42dp"
-                tools:layout_editor_absoluteY="189dp" />
-
-            <TextView
-                android:id="@+id/TxtTrue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="True"
-                tools:layout_conversion_absoluteHeight="19dp"
-                tools:layout_conversion_absoluteWidth="28dp"
-                tools:layout_editor_absoluteX="13dp"
-                tools:layout_editor_absoluteY="193dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/LayoutMultipleRespuesta"
-            android:layout_width="match_parent"
-            android:layout_height="218dp"
-            android:orientation="vertical"
-            tools:visibility="gone">
-
-            <CheckBox
-                android:id="@+id/ChkB_Resp1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ChkB_Resp1"
-                android:textAlignment="center" />
-
-            <CheckBox
-                android:id="@+id/ChkB_Resp2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ChkB_Resp2"
-                android:textAlignment="center" />
-
-            <CheckBox
-                android:id="@+id/ChkB_Resp3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ChkB_Resp3"
-                android:textAlignment="center" />
-
-            <CheckBox
-                android:id="@+id/ChkB_Resp4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ChkB_Resp4"
-                android:textAlignment="center" />
-
-            <CheckBox
-                android:id="@+id/ChkB_Resp5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ChkB_Resp5"
-                android:textAlignment="center" />
-
-            <CheckBox
-                android:id="@+id/ChkB_Resp6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ChkB_Resp6"
-                android:textAlignment="center" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/LayoutRespuestaSkb"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:visibility="gone">
-
-            <TextView
-                android:id="@+id/TxtskbValorSeleccionado"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textAlignment="center" />
-
-            <SeekBar
-                android:id="@+id/Skb_BarraRespuestas"
-                android:layout_width="308dp"
-                android:layout_height="71dp"
-                android:max="100"
-                android:progress="50" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/TxtSeekbarMinValue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="0"
-                    android:textAlignment="viewStart" />
-
-                <TextView
-                    android:id="@+id/TxtSeekbarMaxValue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="100"
-                    android:textAlignment="textEnd" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/LayoutRespuestaButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            android:visibility="visible"
-            tools:visibility="gone">
-
-            <RadioGroup
-                android:id="@+id/Rgbtn_button"
-                android:layout_width="386dp"
-                android:layout_height="match_parent">
-
-                <RadioButton
-                    android:id="@+id/RbtnResp1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="RbtnResp1"
-                    android:textAlignment="center" />
-
-                <RadioButton
-                    android:id="@+id/RbtnResp2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="RbtnResp2"
-                    android:textAlignment="center" />
-
-                <RadioButton
-                    android:id="@+id/RbtnResp3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="RbtnResp3"
-                    android:textAlignment="center" />
-
-                <RadioButton
-                    android:id="@+id/RbtnResp4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="RbtnResp4"
-                    android:textAlignment="center" />
-
-            </RadioGroup>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/Layout_AciertoFallo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="206dp"
-        tools:layout_editor_absoluteY="299dp">
-
-        <TextView
-            android:id="@+id/Txt_Explicacion"
-            android:layout_width="279dp"
-            android:layout_height="125dp"
-            android:background="@drawable/panel_text"
-            android:fontFamily="@font/cherry_cream_soda"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="TextView"
-            android:textColor="#000000"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Txt_RespuestaAcierto"
-            app:layout_constraintVertical_bias="0.13999999" />
-
-        <TextView
-            android:id="@+id/Txt_RespuestaAcierto"
-            android:layout_width="236dp"
-            android:layout_height="100dp"
-            android:background="@drawable/panel_fallo"
-            android:fontFamily="@font/cherry_cream_soda"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="Acierto"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="36sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.302" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+        app:layout_constraintTop_toBottomOf="@+id/fragment2"
+        tools:layout="@layout/fragment_boton_question" />
 </androidx.constraintlayout.widget.ConstraintLayout>

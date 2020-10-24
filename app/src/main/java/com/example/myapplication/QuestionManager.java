@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class QuestionManager extends AppCompatActivity implements View.OnClickListener{
+public class QuestionManager extends AppCompatActivity implements View.OnClickListener, Marcador.OnFragmentInteractionListener, Question.OnFragmentInteractionListener, BotonQuestion.OnFragmentInteractionListener{
     ArrayList<String[]> Preguntas= new ArrayList<String[]>();
     SeekBar Skb_BarraRespuesta;
     int valorMinimo=0;
