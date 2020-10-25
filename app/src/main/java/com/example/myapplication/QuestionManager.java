@@ -9,6 +9,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -28,6 +31,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.time.ZonedDateTime;
+
 public class QuestionManager extends AppCompatActivity implements View.OnClickListener, Marcador.OnFragmentInteractionListener, Question.OnFragmentInteractionListener, BotonQuestion.OnFragmentInteractionListener{
     ArrayList<String[]> Preguntas= new ArrayList<String[]>();
     SeekBar Skb_BarraRespuesta;
@@ -40,6 +47,10 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
     String TipoPreguntaActual;
     String Respuesta;
     int n_pregunta=1;
+    Animation scaleUp, scaleDown;
+    Button btn_validar;
+    Date date;
+    Random rnd;
 
     ArrayList<Pregunta> todasPreguntas = new ArrayList<>();
     ArrayList<Pregunta> preguntas = new ArrayList<>();
@@ -49,13 +60,20 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_manager);
 
+        scaleUp= AnimationUtils.loadAnimation(this, R.anim.scale_up);
+        scaleDown= AnimationUtils.loadAnimation(this, R.anim.scale_down);
+        btn_validar=findViewById(R.id.BtnValidar_SigPregunta);
+
+        date = new Date();
+        rnd = new Random();
+        rnd.setSeed(date.getTime());//cambiar a la hora
+
         parseXML();
 
         n_preguntas_totales = todasPreguntas.size();
         ((TextView)findViewById(R.id.TxtPreguntasContestadas)).setText(n_pregunta+"/"+n_preguntas_totales);
 
-        Random rnd = new Random();
-        rnd.setSeed(6);//cambiar a la hora
+
 
         /*Crea una lista de las posiciones disponibles para ordenar de manera aletoria las preguntas*/
         List<Integer> PosicionesDisponibles = new ArrayList<Integer>();
@@ -141,6 +159,8 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
     }
 
     public void onClick(View v) {
+        btn_validar.startAnimation(scaleDown);
+        btn_validar.startAnimation(scaleUp);
         if (Estado_validar==1){
             ((TextView) findViewById(R.id.BtnValidar_SigPregunta)).setText("Validar Respuesta");
             Estado_validar=0;
@@ -273,8 +293,7 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
         ((TextView) findViewById(R.id.TxtPregunta)).setText(preguntas.get(0).pregunta);
 
         List<Integer> PosicionesDisponiblesRespuesta = new ArrayList<Integer>();
-        Random rnd = new Random();
-        rnd.setSeed(6);//cambiar a la hora
+
         findViewById(R.id.LayoutRespuestaButton).setVisibility(View.GONE);
         findViewById(R.id.LayoutRespuestaSkb).setVisibility(View.GONE);
         findViewById(R.id.LayoutMultipleRespuesta).setVisibility(View.GONE);
@@ -396,10 +415,10 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
             case "ButtonImagen":
 
                 findViewById(R.id.LayoutRespuestaButtonImagen).setVisibility(View.VISIBLE);
-                for(int i=0;i<n_respuestas;i++){
+                for(int i=0;i<preguntas.get(0).imagenes.size();i++){
                     PosicionesDisponiblesRespuesta.add(i);
                 }
-                for(int i=0;i<n_respuestas;i++){
+                for(int i=0;i<preguntas.get(0).imagenes.size();i++){
                     int randomNum = rnd.nextInt((PosicionesDisponiblesRespuesta.size()));
                     switch (i){
                         case 0:

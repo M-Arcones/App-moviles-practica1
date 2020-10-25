@@ -3,73 +3,86 @@
 
 	<pregunta>
 		<tipo>Button</tipo>
-		<ask>Pregunta</ask>
+		<ask>¿Quién fue el jugador que marcó en la final del mundial de 2010?</ask>
 		<respuestas>
-			<respuesta>Resp 1</respuesta>
-			<respuesta>Resp 2</respuesta>
-			<respuesta>Resp 3</respuesta>
-			<respuesta>Resp 4</respuesta>
+			<respuesta>Andrés Iniesta</respuesta>
+			<respuesta>David Villa</respuesta>
+			<respuesta>Sergio Ramos</respuesta>
+			<respuesta>Fernando Torres</respuesta>
 		</respuestas>
-		<explicacion>Aqui se debe poner una explicacion extensa de la respuesta correcta</explicacion>
-		<solucion>Resp 1</solucion>
+		<explicacion>Iniesta marcó en la prórroga el gol decisivo que dio el título a España en una disputadísima final contra Holanda (0-1)</explicacion>
+		<solucion>Andrés Iniesta</solucion>
 	</pregunta>
 	
 	<pregunta>
 		<tipo>Seekbar</tipo>
-		<ask>Pregunta</ask>
+		<ask>¿Cuál es el máximo número de goles que se han marcado en un partido?</ask>
 		<min>10</min>
-		<max>50</max>
-		<explicacion>Aqui se debe poner una explicacion extensa de la espuiesta correcta</explicacion>
-		<solucion>30</solucion>
+		<max>200</max>
+		<explicacion>El 31 de Octubre de 2002  ek AS Adema ganó al SO I'Emyrne 149-0</explicacion>
+		<solucion>149</solucion>
 	</pregunta>
 
 	<pregunta>
 		<tipo>Imagen</tipo>
-		<ask>Pregunta</ask>
-		<imagen>imagen2</imagen>
+		<ask>¿Donde se jugó la final de la Champion de la foto?</ask>
+		<imagen>imagen_gol_ramos</imagen>
 		<respuestas>
-			<respuesta>Resp 1</respuesta>
-			<respuesta>Resp 2</respuesta>
-			<respuesta>Resp 3</respuesta>
-			<respuesta>Resp 4</respuesta>
+			<respuesta>Lisboa</respuesta>
+			<respuesta>Milán</respuesta>
+			<respuesta>Cardiff</respuesta>
+			<respuesta>Kiev</respuesta>
 		</respuestas>
-		<explicacion>Aqui se debe poner una explicacion extensa de la espuiesta correcta</explicacion>
-		<solucion>Resp 1</solucion>
+		<explicacion>Sergio Ramos marcó este gol en la final de Lisboa en el minuto 93 provocando la prórroga, lo que finalizaría con la Décima Champion para el conjunto blanco </explicacion>
+		<solucion>Lisboa</solucion>
 	</pregunta>
 
 	<pregunta>
 		<tipo>Multiple</tipo>
-		<ask>Pregunta</ask>
+		<ask>¿Cuáles de estos equipos han ganado alguna Liga?</ask>
 		<respuestas>
-			<respuesta>Resp 1</respuesta>
-			<respuesta>Resp 2</respuesta>
-			<respuesta>Resp 3</respuesta>
-			<respuesta>Resp 4</respuesta>
-			<respuesta>Resp 5</respuesta>
-			<respuesta>Resp 6</respuesta>
+			<respuesta>Real Sociedad</respuesta>
+			<respuesta>Celta del Vigo</respuesta>
+			<respuesta>Sevilla</respuesta>
+			<respuesta>Betis</respuesta>
+			<respuesta>Getafe</respuesta>
+			<respuesta>Osasuna</respuesta>
 		</respuestas>
-		<explicacion>Aqui se debe poner una explicacion extensa de la espuiesta correcta</explicacion>
-		<solucion>Resp 2|Resp 5|Resp 3</solucion>
+		<explicacion>El Real Sociedad ganó dos trofeos ligueros en 1981 y 1982, el Sevilla ganó este trofeo únicamente en 1946 y el Betis en 1935</explicacion>
+		<solucion>Real Sociedad|Sevilla|Betis</solucion>
 	</pregunta>
 
 	<pregunta>
 		<tipo>Switch</tipo>
-		<ask>Pregunta</ask>
-		<explicacion>Aqui se debe poner una explicacion extensa de la espuiesta correcta</explicacion>
+		<ask>¿Lionel Messi es el futbolista que más veces ha ganado el Trofeo Pichichi de la Liga?</ask>
+		<explicacion>Verdadero, Lionel Messi ha ganado este trofeo 7 veces, ademas tiene el record con mas goles en una temporada con 50 goles</explicacion>
 		<solucion>true</solucion>
 	</pregunta>
 
 	<pregunta>
 		<tipo>ButtonImagen</tipo>
-		<ask>Pregunta</ask>
+		<ask>¿Cuál de todas estas imagenes corresponde con un penalti?</ask>
 		<imagenes>
-			<imagen>imagen1</imagen>
-			<imagen>imagen2</imagen>
-			<imagen>imagen3</imagen>
-			<imagen>imagen4</imagen>
+			<imagen>imagen_saque_banda</imagen>
+			<imagen>imagen_saque_esquina</imagen>
+			<imagen>imagen_tiro_penalti</imagen>
+			<imagen>imagen_falta</imagen>
 		</imagenes>
 		<explicacion>Aqui se debe poner una explicacion extensa de la espuiesta correcta</explicacion>
-		<solucion>imagen1</solucion>
+		<solucion>imagen_tiro_penalti</solucion>
+	</pregunta>
+
+	<pregunta>
+		<tipo>Button</tipo>
+		<ask>¿Cuál es el equipo español que ha conseguido mayor diferencia de goles en una eliminatoria de competición europea?</ask>
+		<respuestas>
+			<respuesta>Barcelona</respuesta>
+			<respuesta>Real Madrid</respuesta>
+			<respuesta>Atlético de Madrid</respuesta>
+			<respuesta>Rayo Vallecano</respuesta>
+		</respuestas>
+		<explicacion>El Rayo Vallecanó ganó 10-0 en la ida y 0-6 en la vuelta contra el Constelació Esportiva de Andorra en la UEFA de la temporada 2000/2001</explicacion>
+		<solucion>Rayo Vallecano</solucion>
 	</pregunta>
 	
 </preguntas>
