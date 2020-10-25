@@ -325,7 +325,7 @@
                 android:layout_marginTop="20dp"
                 android:orientation="vertical"
                 android:visibility="visible"
-                tools:visibility="gone">
+                tools:visibility="visible">
 
                 <RadioGroup
                     android:id="@+id/Rgbtn_button"

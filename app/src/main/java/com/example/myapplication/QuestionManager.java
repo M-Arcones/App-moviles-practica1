@@ -303,6 +303,7 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
         findViewById(R.id.Layout_AciertoFallo).setVisibility(View.GONE);
         switch (preguntas.get(0).tipo){
             case "Button":
+                ((RadioGroup) findViewById(R.id.Rgbtn_button)).clearCheck();
                 findViewById(R.id.LayoutRespuestaButton).setVisibility(View.VISIBLE);
                 for(int i=0;i<n_respuestas;i++){
                     PosicionesDisponiblesRespuesta.add(i);
@@ -311,19 +312,15 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                     int randomNum = rnd.nextInt((PosicionesDisponiblesRespuesta.size()));
                     switch (i){
                         case 0:
-                            ((RadioButton) findViewById(R.id.RbtnResp1)).setChecked(false);
                             ((TextView) findViewById(R.id.RbtnResp1)).setText(preguntas.get(0).respuestas.get(PosicionesDisponiblesRespuesta.get(randomNum)));
                             break;
                         case 1:
-                            ((RadioButton) findViewById(R.id.RbtnResp2)).setChecked(false);
                             ((TextView) findViewById(R.id.RbtnResp2)).setText(preguntas.get(0).respuestas.get(PosicionesDisponiblesRespuesta.get(randomNum)));
                             break;
                         case 2:
-                            ((RadioButton) findViewById(R.id.RbtnResp3)).setChecked(false);
                             ((TextView) findViewById(R.id.RbtnResp3)).setText(preguntas.get(0).respuestas.get(PosicionesDisponiblesRespuesta.get(randomNum)));
                             break;
                         case 3:
-                            ((RadioButton) findViewById(R.id.RbtnResp4)).setChecked(false);
                             ((TextView) findViewById(R.id.RbtnResp4)).setText(preguntas.get(0).respuestas.get(PosicionesDisponiblesRespuesta.get(randomNum)));
                             break;
                     }
@@ -376,6 +373,7 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                 }
             break;
             case "Imagen":
+                ((RadioGroup) findViewById(R.id.Rgbtn_button)).clearCheck();
                 findViewById(R.id.LayoutRespuestaButton).setVisibility(View.VISIBLE);
                 findViewById(R.id.Layout_ImagenPregunta).setVisibility(View.VISIBLE);
 
@@ -388,19 +386,15 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                     int randomNum = rnd.nextInt((PosicionesDisponiblesRespuesta.size()));
                     switch (i){
                         case 0:
-                            ((RadioButton) findViewById(R.id.RbtnResp1)).setChecked(false);
                             ((TextView) findViewById(R.id.RbtnResp1)).setText(preguntas.get(0).respuestas.get(PosicionesDisponiblesRespuesta.get(randomNum)));
                             break;
                         case 1:
-                            ((RadioButton) findViewById(R.id.RbtnResp2)).setChecked(false);
                             ((TextView) findViewById(R.id.RbtnResp2)).setText(preguntas.get(0).respuestas.get(PosicionesDisponiblesRespuesta.get(randomNum)));
                             break;
                         case 2:
-                            ((RadioButton) findViewById(R.id.RbtnResp3)).setChecked(false);
                             ((TextView) findViewById(R.id.RbtnResp3)).setText(preguntas.get(0).respuestas.get(PosicionesDisponiblesRespuesta.get(randomNum)));
                             break;
                         case 3:
-                            ((RadioButton) findViewById(R.id.RbtnResp4)).setChecked(false);
                             ((TextView) findViewById(R.id.RbtnResp4)).setText(preguntas.get(0).respuestas.get(PosicionesDisponiblesRespuesta.get(randomNum)));
                             break;
                     }
