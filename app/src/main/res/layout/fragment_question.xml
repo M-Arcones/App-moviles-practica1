@@ -148,15 +148,15 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:visibility="visible"
-                tools:visibility="gone">
+                android:background="@drawable/panel_respuesta"
+                tools:visibility="visible">
 
                 <TextView
                     android:id="@+id/TxtFalse"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/panel_respuesta"
                     android:fontFamily="@font/cherry_cream_soda"
-                    android:text="False"
+                    android:text="Falso"
                     android:textColor="#000000"
                     tools:layout_conversion_absoluteHeight="19dp"
                     tools:layout_conversion_absoluteWidth="33dp"
@@ -167,7 +167,6 @@
                     android:id="@+id/Switch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/panel_respuesta"
                     android:checked="false"
                     tools:checked="true"
                     tools:layout_conversion_absoluteHeight="27dp"
@@ -179,10 +178,9 @@
                     android:id="@+id/TxtTrue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/panel_respuesta"
                     android:fontFamily="@font/cherry_cream_soda"
+                    android:text="Verdadero"
                     android:textColor="#000000"
-                    android:text="True"
                     tools:layout_conversion_absoluteHeight="19dp"
                     tools:layout_conversion_absoluteWidth="28dp"
                     tools:layout_editor_absoluteX="13dp"
@@ -325,7 +323,7 @@
                 android:layout_marginTop="20dp"
                 android:orientation="vertical"
                 android:visibility="visible"
-                tools:visibility="visible">
+                tools:visibility="gone">
 
                 <RadioGroup
                     android:id="@+id/Rgbtn_button"
