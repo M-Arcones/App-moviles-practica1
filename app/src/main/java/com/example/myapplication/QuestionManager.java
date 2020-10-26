@@ -161,6 +161,7 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         btn_validar.startAnimation(scaleDown);
         btn_validar.startAnimation(scaleUp);
+        int valorResuesta=suma_Fallo;
         if (Estado_validar==1){
             ((TextView) findViewById(R.id.BtnValidar_SigPregunta)).setText("Validar Respuesta");
             Estado_validar=0;
@@ -180,7 +181,7 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                 deshabilitarCambiosRadioGroup((RadioGroup) findViewById(R.id.Rgbtn_button),false);
                 deshabilitarCambiosLayout((LinearLayout) findViewById(R.id.LayoutSwitch),false);
 
-                int valorResuesta=suma_Fallo;
+
                 switch (preguntas.get(0).tipo){
                     case "Button":
                     case "Imagen":
@@ -233,6 +234,7 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                         if(cont_respCorrrectas==N_respuestas){
                             valorResuesta=suma_Acierto;
                         }
+                    break;
                     case "Switch":
                         if (((Switch)findViewById(R.id.Switch)).isChecked()==Boolean.parseBoolean(preguntas.get(0).solucion)){
                             valorResuesta=suma_Acierto;

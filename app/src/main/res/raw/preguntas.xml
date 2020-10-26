@@ -68,7 +68,7 @@
 			<imagen>imagen_tiro_penalti</imagen>
 			<imagen>imagen_falta</imagen>
 		</imagenes>
-		<explicacion>Aqui se debe poner una explicacion extensa de la espuiesta correcta</explicacion>
+		<explicacion>Un penalti consiste en lanzar un tiro desde el punto ubicado a 11 metros de la portería.</explicacion>
 		<solucion>imagen_tiro_penalti</solucion>
 	</pregunta>
 
