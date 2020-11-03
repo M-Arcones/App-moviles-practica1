@@ -282,6 +282,7 @@ public class QuestionManager extends AppCompatActivity implements View.OnClickLi
                 intent.putExtra("puntuacion", Puntuacion);
                 intent.putExtra("n_preguntas_totales", n_preguntas_totales);
                 startActivity(intent);
+                finish();
             }
         }
     }

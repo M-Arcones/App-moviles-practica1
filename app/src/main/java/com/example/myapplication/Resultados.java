@@ -45,5 +45,6 @@ public class Resultados extends AppCompatActivity implements View.OnClickListene
         intent = new Intent(this, QuestionManager.class);
         intent.putExtra("n_preguntas_totales", n_preguntas_totales);
         startActivity(intent);
+        finish();
     }
 }
